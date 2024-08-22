@@ -12,6 +12,7 @@ namespace WeBe___WeatherVibe.Classes
         public string City { get; set; }
         public string Save { get; set; }
         public string WallpaperEngineExecutable { get; set; }
+        [JsonProperty(PropertyName="Language")]
         public string LanguageText { get; set; }
         public string FindExecutable { get; set; }
         public string Home { get; set; }
