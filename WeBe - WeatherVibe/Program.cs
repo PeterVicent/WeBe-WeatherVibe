@@ -220,9 +220,8 @@ namespace WeBe___WeatherVibe
                     try
                     {
                         var hourNow = DateTime.Now.TimeOfDay;
-                        var teste = TimeSpan.Parse(SaveSystem.SaveData.FirstHourNight);
-                        var teste2 = TimeSpan.Parse(SaveSystem.SaveData.SecondHourNight);
-                        var isNight = hourNow > TimeSpan.Parse(SaveSystem.SaveData.FirstHourNight) && hourNow < TimeSpan.Parse(SaveSystem.SaveData.SecondHourNight);
+                        var isNight = hourNow > TimeSpan.Parse(SaveSystem.SaveData.FirstHourNight) 
+                                   && hourNow < TimeSpan.Parse(SaveSystem.SaveData.SecondHourNight);
 
                         var actualWeather = Weather.GetWeatherByLocation(location);
                         if (weather == null || !weather.Equals(actualWeather))
