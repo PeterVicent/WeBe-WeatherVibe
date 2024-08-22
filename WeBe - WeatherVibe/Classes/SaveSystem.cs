@@ -22,7 +22,8 @@ namespace WeBe___WeatherVibe.Classes
                 ApiToken = string.Empty,
                 FirstHourNight = "18:30",
                 SecondHourNight = "06:00",
-                SimplifiedMode = true
+                SimplifiedMode = true,
+                StartMinimized = false
             };
 
         internal static void CheckIfSaveExists()
@@ -55,5 +56,8 @@ namespace WeBe___WeatherVibe.Classes
         public string FirstHourNight { get; set; }
         public string SecondHourNight { get; set; }
         public bool SimplifiedMode { get; set; }
+        public bool StartMinimized { get; set; }
+        public bool AutoStart { get; set; }
+        public bool StartWithWindows { get; set; }
     }
 }

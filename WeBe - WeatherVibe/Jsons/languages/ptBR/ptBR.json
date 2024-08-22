@@ -23,5 +23,11 @@
   "SimplifiedMode": "Modo Simplificado",
   "NightProfile": "Perfil Noturno",
   "NightInterval": "Intervalo Noturno",
-  "Until": "Até"
+  "Until": "Até",
+  "Successful": "Sucesso",
+  "StartedMinimized": "Iniciado minimizado",
+  "StartMinimized": "Iniciar minimizado",
+  "AutoStart": "INICIAR Automaticamente",
+  "StartWithWindows": "Iniciar com o Windows",
+  "Exit": "Sair"
 }

@@ -32,6 +32,12 @@ namespace WeBe___WeatherVibe.Classes
         public string NightProfile { get; set; }
         public string NightInterval { get; set; }
         public string Until { get; set; }
+        public string Successful { get; set; }
+        public string StartedMinimized { get; set; }
+        public string StartMinimized { get; set; }
+        public string AutoStart { get; set; }
+        public string StartWithWindows { get; set; }
+        public string Exit { get; set; }
 
         [JsonIgnore()]
         public static Dictionary<string, string> SupportedLanguages { get; set; }

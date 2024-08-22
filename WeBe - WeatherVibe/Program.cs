@@ -12,6 +12,7 @@ namespace WeBe___WeatherVibe
         public const string DefaultWeatherCode = "0";
 
         public static WeBe WeBe;
+        public static Notification Notification;
         public static Thread Thread;
         
         [STAThread]
@@ -22,6 +23,16 @@ namespace WeBe___WeatherVibe
 
             WeBe = new WeBe();
             LoadVariables();
+            if (SaveSystem.SaveData.StartMinimized)
+            {
+                WeBe.ShowInTaskbar = false;
+                WeBe.WindowState = FormWindowState.Minimized;
+                Notification.ShowSuccessfulNotification(Language.DataBase.Successful, Language.DataBase.StartedMinimized);
+            }
+
+            if (SaveSystem.SaveData.AutoStart)
+                StartThread();
+
             Application.Run(WeBe);
         }
 
@@ -29,11 +40,15 @@ namespace WeBe___WeatherVibe
         {
             SaveSystem.CheckIfSaveExists();
             Language.InstantiateDataBase();
+            Notification = new Notification(WeBe);
 
             Weather.WeatherCodes = Weather.GetWeatherCodesByLanguage();
             WallpaperEngine.ExecutablePath = SaveSystem.SaveData.WallpaperEngineExecutablePath;
 
             WeBe.chkBox_SimplifiedMode.Checked = SaveSystem.SaveData.SimplifiedMode;
+            WeBe.chkBox_StartMinimized.Checked = SaveSystem.SaveData.StartMinimized;
+            WeBe.chkBox_AutoStart.Checked = SaveSystem.SaveData.AutoStart;
+            WeBe.chkBox_StartWithWindows.Checked = SaveSystem.SaveData.StartWithWindows;
             WeBe.txtBx_WallpaperEngineExecutable.Text = WallpaperEngine.ExecutablePath;
             WeBe.txtBx_ApiToken.Text = SaveSystem.SaveData.ApiToken;
             WeBe.txtBx_Interval.Text = (SaveSystem.SaveData.Interval / 60000).ToString();
@@ -59,13 +74,20 @@ namespace WeBe___WeatherVibe
 
             WeBe.tabControl_Principal.TabPages[0].Text = Language.DataBase.Home;
             WeBe.tabControl_Principal.TabPages[1].Text = Language.DataBase.Options;
+            WeBe.context_Options.Text = Language.DataBase.Options;
             WeBe.tabControl_Configuration.TabPages[0].Text = Language.DataBase.Profiles;
+            WeBe.context_Profiles.Text = Language.DataBase.Profiles;
             WeBe.tabControl_Configuration.TabPages[1].Text = Language.DataBase.Settings;
-            
+            WeBe.context_Settings.Text = Language.DataBase.Settings;
+            WeBe.context_Exit.Text = Language.DataBase.Exit;
+
             WeBe.label_WallpaperEngineExecutable.Text = Language.DataBase.WallpaperEngineExecutable;
             WeBe.label_Interval.Text = Language.DataBase.ExecutionInterval;
             WeBe.label_NightInterval.Text = Language.DataBase.NightInterval;
             WeBe.label_Until.Text = Language.DataBase.Until;
+            WeBe.chkBox_StartMinimized.Text = Language.DataBase.StartMinimized;
+            WeBe.chkBox_AutoStart.Text = Language.DataBase.AutoStart;
+            WeBe.chkBox_StartWithWindows.Text = Language.DataBase.StartWithWindows;
 
             WeBe.label_Weather.Text = Language.DataBase.Weather;
             WeBe.chkBox_SimplifiedMode.Text = Language.DataBase.SimplifiedMode;
@@ -73,6 +95,9 @@ namespace WeBe___WeatherVibe
             WeBe.label_ProfileName.Text = Language.DataBase.ProfileName;
             WeBe.btn_Add.Text = Language.DataBase.Add;
             WeBe.btn_Clear.Text = Language.DataBase.Clear;
+
+            WeBe.btn_GetWeather.Enabled = true;
+            WeBe.btn_GetWeather.Visible = true;
         }
 
         internal static void LoadComboBoxsAndSetLanguage()

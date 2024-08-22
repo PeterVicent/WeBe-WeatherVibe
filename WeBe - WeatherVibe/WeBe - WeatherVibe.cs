@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Linq;
 using System.Windows.Forms;
 using WeBe___WeatherVibe.Classes;
@@ -12,6 +13,13 @@ namespace WeBe___WeatherVibe
         public WeBe()
         {
             InitializeComponent();
+        }
+
+        internal void BringToFontTheWindows()
+        {
+            ShowInTaskbar = true;
+            WindowState = FormWindowState.Normal;
+            BringToFront();
         }
 
         private void cbx_Country_DropDown(object sender, EventArgs e)
@@ -57,6 +65,8 @@ namespace WeBe___WeatherVibe
 
         private void btn_Save_Click(object sender, EventArgs e)
         {
+            CheckIfNeedToStartWithWindows();
+
             SaveSystem.SaveData = new SaveData()
             {
                 Country = cbx_Country.SelectedItem.ToString(),
@@ -68,11 +78,27 @@ namespace WeBe___WeatherVibe
                 ApiToken = txtBx_ApiToken.Text,
                 FirstHourNight = txtBox_FirstHourNight.Text,
                 SecondHourNight = txtBox_SecondHourNight.Text,
-                SimplifiedMode = chkBox_SimplifiedMode.Checked
+                SimplifiedMode = chkBox_SimplifiedMode.Checked,
+                StartMinimized = chkBox_StartMinimized.Checked,
+                AutoStart = chkBox_AutoStart.Checked,
+                StartWithWindows = chkBox_StartWithWindows.Checked
             };
             SaveSystem.Save();
 
             Program.LoadVariables();
+        }
+
+        private void CheckIfNeedToStartWithWindows()
+        {
+            if (SaveSystem.SaveData.StartWithWindows.Equals(chkBox_StartWithWindows.Checked))
+                return;
+
+            var projectTitle = "WeBe - WeatherVibe";
+            var register = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
+            if (chkBox_StartWithWindows.Checked)
+                register.SetValue(projectTitle, Application.ExecutablePath.ToString());
+            else
+                register.DeleteValue(projectTitle, false);
         }
 
         private void btn_Start_Click(object sender, EventArgs e)
@@ -144,10 +170,39 @@ namespace WeBe___WeatherVibe
             label_ActualWeather.Text = weatherCode.Value.ToString();
         }
 
-        private void Notify_Click(object sender, EventArgs e)
+        private void Notify_MouseClick(object sender, MouseEventArgs e)
         {
-            WindowState = FormWindowState.Normal;
-            BringToFront();
+            if (e.Button != MouseButtons.Left)
+                return;
+
+            BringToFontTheWindows();
         }
+
+        private void WeBe_Deactivate(object sender, EventArgs e)
+        {
+            if (WindowState == FormWindowState.Minimized)
+                ShowInTaskbar = false;
+        }
+
+        private void context_Options_Click(object sender, EventArgs e)
+        {
+            BringToFontTheWindows();
+            tabControl_Principal.SelectedIndex = 1;
+        }
+
+        private void context_Profiles_Click(object sender, EventArgs e)
+        {
+            context_Options_Click(sender, e);
+            tabControl_Configuration.SelectedIndex = 0;
+        }
+
+        private void context_Settings_Click(object sender, EventArgs e)
+        {
+            context_Options_Click(sender, e);
+            tabControl_Configuration.SelectedIndex = 1;
+        }
+
+        private void context_Exit_Click(object sender, EventArgs e)
+            => Application.Exit();
     }
 }

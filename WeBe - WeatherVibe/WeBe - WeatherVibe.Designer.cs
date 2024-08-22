@@ -51,6 +51,9 @@
             this.cbx_Weathers = new System.Windows.Forms.ComboBox();
             this.listBox_Profiles = new System.Windows.Forms.ListBox();
             this.Settings = new System.Windows.Forms.TabPage();
+            this.chkBox_StartWithWindows = new System.Windows.Forms.CheckBox();
+            this.chkBox_AutoStart = new System.Windows.Forms.CheckBox();
+            this.chkBox_StartMinimized = new System.Windows.Forms.CheckBox();
             this.txtBox_SecondHourNight = new System.Windows.Forms.MaskedTextBox();
             this.txtBox_FirstHourNight = new System.Windows.Forms.MaskedTextBox();
             this.label_Until = new System.Windows.Forms.Label();
@@ -75,6 +78,10 @@
             this.notify_ContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.context_Start = new System.Windows.Forms.ToolStripMenuItem();
             this.context_Stop = new System.Windows.Forms.ToolStripMenuItem();
+            this.context_Options = new System.Windows.Forms.ToolStripMenuItem();
+            this.context_Profiles = new System.Windows.Forms.ToolStripMenuItem();
+            this.context_Settings = new System.Windows.Forms.ToolStripMenuItem();
+            this.context_Exit = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl_Principal.SuspendLayout();
             this.Home.SuspendLayout();
             this.Options.SuspendLayout();
@@ -87,9 +94,9 @@
             // btn_Save
             // 
             this.btn_Save.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.btn_Save.Location = new System.Drawing.Point(3, 343);
+            this.btn_Save.Location = new System.Drawing.Point(3, 340);
             this.btn_Save.Name = "btn_Save";
-            this.btn_Save.Size = new System.Drawing.Size(829, 23);
+            this.btn_Save.Size = new System.Drawing.Size(549, 23);
             this.btn_Save.TabIndex = 2;
             this.btn_Save.Text = "Save";
             this.btn_Save.UseVisualStyleBackColor = true;
@@ -105,7 +112,7 @@
             this.tabControl_Principal.Location = new System.Drawing.Point(12, 12);
             this.tabControl_Principal.Name = "tabControl_Principal";
             this.tabControl_Principal.SelectedIndex = 0;
-            this.tabControl_Principal.Size = new System.Drawing.Size(863, 430);
+            this.tabControl_Principal.Size = new System.Drawing.Size(583, 430);
             this.tabControl_Principal.TabIndex = 3;
             // 
             // Home
@@ -120,7 +127,7 @@
             this.Home.Location = new System.Drawing.Point(4, 22);
             this.Home.Name = "Home";
             this.Home.Padding = new System.Windows.Forms.Padding(3);
-            this.Home.Size = new System.Drawing.Size(855, 404);
+            this.Home.Size = new System.Drawing.Size(575, 404);
             this.Home.TabIndex = 0;
             this.Home.Text = "Home";
             this.Home.UseVisualStyleBackColor = true;
@@ -148,12 +155,14 @@
             // 
             // btn_GetWeather
             // 
-            this.btn_GetWeather.Location = new System.Drawing.Point(9, 77);
+            this.btn_GetWeather.Enabled = false;
+            this.btn_GetWeather.Location = new System.Drawing.Point(478, 249);
             this.btn_GetWeather.Name = "btn_GetWeather";
-            this.btn_GetWeather.Size = new System.Drawing.Size(119, 23);
+            this.btn_GetWeather.Size = new System.Drawing.Size(91, 23);
             this.btn_GetWeather.TabIndex = 2;
             this.btn_GetWeather.Text = "Get Weather";
             this.btn_GetWeather.UseVisualStyleBackColor = true;
+            this.btn_GetWeather.Visible = false;
             this.btn_GetWeather.Click += new System.EventHandler(this.btn_GetWeather_Click);
             // 
             // btn_Stop
@@ -163,7 +172,7 @@
             this.btn_Stop.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Stop.Location = new System.Drawing.Point(3, 333);
             this.btn_Stop.Name = "btn_Stop";
-            this.btn_Stop.Size = new System.Drawing.Size(849, 34);
+            this.btn_Stop.Size = new System.Drawing.Size(569, 34);
             this.btn_Stop.TabIndex = 1;
             this.btn_Stop.Text = "STOP";
             this.btn_Stop.UseVisualStyleBackColor = true;
@@ -176,7 +185,7 @@
             this.btn_Start.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Start.Location = new System.Drawing.Point(3, 367);
             this.btn_Start.Name = "btn_Start";
-            this.btn_Start.Size = new System.Drawing.Size(849, 34);
+            this.btn_Start.Size = new System.Drawing.Size(569, 34);
             this.btn_Start.TabIndex = 0;
             this.btn_Start.Text = "START";
             this.btn_Start.UseVisualStyleBackColor = true;
@@ -188,7 +197,7 @@
             this.Options.Location = new System.Drawing.Point(4, 22);
             this.Options.Name = "Options";
             this.Options.Padding = new System.Windows.Forms.Padding(3);
-            this.Options.Size = new System.Drawing.Size(855, 404);
+            this.Options.Size = new System.Drawing.Size(575, 404);
             this.Options.TabIndex = 1;
             this.Options.Text = "Options";
             this.Options.UseVisualStyleBackColor = true;
@@ -203,7 +212,7 @@
             this.tabControl_Configuration.Location = new System.Drawing.Point(6, 6);
             this.tabControl_Configuration.Name = "tabControl_Configuration";
             this.tabControl_Configuration.SelectedIndex = 0;
-            this.tabControl_Configuration.Size = new System.Drawing.Size(843, 395);
+            this.tabControl_Configuration.Size = new System.Drawing.Size(563, 392);
             this.tabControl_Configuration.TabIndex = 0;
             // 
             // Profiles
@@ -220,15 +229,16 @@
             this.Profiles.Location = new System.Drawing.Point(4, 22);
             this.Profiles.Name = "Profiles";
             this.Profiles.Padding = new System.Windows.Forms.Padding(3);
-            this.Profiles.Size = new System.Drawing.Size(835, 369);
+            this.Profiles.Size = new System.Drawing.Size(555, 366);
             this.Profiles.TabIndex = 0;
             this.Profiles.Text = "Profiles";
             this.Profiles.UseVisualStyleBackColor = true;
             // 
             // chkBox_IsNight
             // 
+            this.chkBox_IsNight.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.chkBox_IsNight.AutoSize = true;
-            this.chkBox_IsNight.Location = new System.Drawing.Point(340, 73);
+            this.chkBox_IsNight.Location = new System.Drawing.Point(365, 155);
             this.chkBox_IsNight.Name = "chkBox_IsNight";
             this.chkBox_IsNight.Size = new System.Drawing.Size(83, 17);
             this.chkBox_IsNight.TabIndex = 9;
@@ -238,8 +248,9 @@
             // 
             // chkBox_SimplifiedMode
             // 
+            this.chkBox_SimplifiedMode.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.chkBox_SimplifiedMode.AutoSize = true;
-            this.chkBox_SimplifiedMode.Location = new System.Drawing.Point(340, 25);
+            this.chkBox_SimplifiedMode.Location = new System.Drawing.Point(365, 91);
             this.chkBox_SimplifiedMode.Name = "chkBox_SimplifiedMode";
             this.chkBox_SimplifiedMode.Size = new System.Drawing.Size(100, 17);
             this.chkBox_SimplifiedMode.TabIndex = 7;
@@ -250,7 +261,7 @@
             // btn_Clear
             // 
             this.btn_Clear.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btn_Clear.Location = new System.Drawing.Point(6, 340);
+            this.btn_Clear.Location = new System.Drawing.Point(6, 331);
             this.btn_Clear.Name = "btn_Clear";
             this.btn_Clear.Size = new System.Drawing.Size(164, 23);
             this.btn_Clear.TabIndex = 6;
@@ -260,9 +271,10 @@
             // 
             // btn_Add
             // 
-            this.btn_Add.Location = new System.Drawing.Point(177, 97);
+            this.btn_Add.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btn_Add.Location = new System.Drawing.Point(265, 198);
             this.btn_Add.Name = "btn_Add";
-            this.btn_Add.Size = new System.Drawing.Size(156, 23);
+            this.btn_Add.Size = new System.Drawing.Size(211, 23);
             this.btn_Add.TabIndex = 5;
             this.btn_Add.Text = "Add";
             this.btn_Add.UseVisualStyleBackColor = true;
@@ -270,10 +282,9 @@
             // 
             // label_Weather
             // 
-            this.label_Weather.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.label_Weather.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label_Weather.AutoSize = true;
-            this.label_Weather.Location = new System.Drawing.Point(176, 6);
+            this.label_Weather.Location = new System.Drawing.Point(263, 92);
             this.label_Weather.Name = "label_Weather";
             this.label_Weather.Size = new System.Drawing.Size(48, 13);
             this.label_Weather.TabIndex = 4;
@@ -281,10 +292,9 @@
             // 
             // label_ProfileName
             // 
-            this.label_ProfileName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.label_ProfileName.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label_ProfileName.AutoSize = true;
-            this.label_ProfileName.Location = new System.Drawing.Point(176, 55);
+            this.label_ProfileName.Location = new System.Drawing.Point(264, 156);
             this.label_ProfileName.Name = "label_ProfileName";
             this.label_ProfileName.Size = new System.Drawing.Size(67, 13);
             this.label_ProfileName.TabIndex = 3;
@@ -292,21 +302,19 @@
             // 
             // txtBx_ProfileName
             // 
-            this.txtBx_ProfileName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.txtBx_ProfileName.Location = new System.Drawing.Point(178, 71);
+            this.txtBx_ProfileName.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.txtBx_ProfileName.Location = new System.Drawing.Point(266, 172);
             this.txtBx_ProfileName.Name = "txtBx_ProfileName";
-            this.txtBx_ProfileName.Size = new System.Drawing.Size(155, 20);
+            this.txtBx_ProfileName.Size = new System.Drawing.Size(210, 20);
             this.txtBx_ProfileName.TabIndex = 2;
             // 
             // cbx_Weathers
             // 
-            this.cbx_Weathers.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.cbx_Weathers.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.cbx_Weathers.FormattingEnabled = true;
-            this.cbx_Weathers.Location = new System.Drawing.Point(178, 22);
+            this.cbx_Weathers.Location = new System.Drawing.Point(265, 108);
             this.cbx_Weathers.Name = "cbx_Weathers";
-            this.cbx_Weathers.Size = new System.Drawing.Size(156, 21);
+            this.cbx_Weathers.Size = new System.Drawing.Size(211, 21);
             this.cbx_Weathers.TabIndex = 1;
             this.cbx_Weathers.SelectedIndexChanged += new System.EventHandler(this.cbx_Weathers_SelectedIndexChanged);
             // 
@@ -317,12 +325,15 @@
             this.listBox_Profiles.FormattingEnabled = true;
             this.listBox_Profiles.Location = new System.Drawing.Point(6, 6);
             this.listBox_Profiles.Name = "listBox_Profiles";
-            this.listBox_Profiles.Size = new System.Drawing.Size(164, 329);
+            this.listBox_Profiles.Size = new System.Drawing.Size(164, 316);
             this.listBox_Profiles.TabIndex = 0;
             this.listBox_Profiles.KeyDown += new System.Windows.Forms.KeyEventHandler(this.listBox_Profiles_KeyDown);
             // 
             // Settings
             // 
+            this.Settings.Controls.Add(this.chkBox_StartWithWindows);
+            this.Settings.Controls.Add(this.chkBox_AutoStart);
+            this.Settings.Controls.Add(this.chkBox_StartMinimized);
             this.Settings.Controls.Add(this.txtBox_SecondHourNight);
             this.Settings.Controls.Add(this.txtBox_FirstHourNight);
             this.Settings.Controls.Add(this.label_Until);
@@ -346,34 +357,69 @@
             this.Settings.Location = new System.Drawing.Point(4, 22);
             this.Settings.Name = "Settings";
             this.Settings.Padding = new System.Windows.Forms.Padding(3);
-            this.Settings.Size = new System.Drawing.Size(835, 369);
+            this.Settings.Size = new System.Drawing.Size(555, 366);
             this.Settings.TabIndex = 1;
             this.Settings.Text = "Settings";
             this.Settings.UseVisualStyleBackColor = true;
             // 
+            // chkBox_StartWithWindows
+            // 
+            this.chkBox_StartWithWindows.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.chkBox_StartWithWindows.AutoSize = true;
+            this.chkBox_StartWithWindows.Location = new System.Drawing.Point(221, 145);
+            this.chkBox_StartWithWindows.Name = "chkBox_StartWithWindows";
+            this.chkBox_StartWithWindows.Size = new System.Drawing.Size(117, 17);
+            this.chkBox_StartWithWindows.TabIndex = 26;
+            this.chkBox_StartWithWindows.Text = "Start with Windows";
+            this.chkBox_StartWithWindows.UseVisualStyleBackColor = true;
+            // 
+            // chkBox_AutoStart
+            // 
+            this.chkBox_AutoStart.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.chkBox_AutoStart.AutoSize = true;
+            this.chkBox_AutoStart.Location = new System.Drawing.Point(221, 122);
+            this.chkBox_AutoStart.Name = "chkBox_AutoStart";
+            this.chkBox_AutoStart.Size = new System.Drawing.Size(87, 17);
+            this.chkBox_AutoStart.TabIndex = 25;
+            this.chkBox_AutoStart.Text = "Auto START";
+            this.chkBox_AutoStart.UseVisualStyleBackColor = true;
+            // 
+            // chkBox_StartMinimized
+            // 
+            this.chkBox_StartMinimized.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.chkBox_StartMinimized.AutoSize = true;
+            this.chkBox_StartMinimized.Location = new System.Drawing.Point(221, 98);
+            this.chkBox_StartMinimized.Name = "chkBox_StartMinimized";
+            this.chkBox_StartMinimized.Size = new System.Drawing.Size(97, 17);
+            this.chkBox_StartMinimized.TabIndex = 24;
+            this.chkBox_StartMinimized.Text = "Start Minimized";
+            this.chkBox_StartMinimized.UseVisualStyleBackColor = true;
+            // 
             // txtBox_SecondHourNight
             // 
-            this.txtBox_SecondHourNight.Location = new System.Drawing.Point(779, 172);
+            this.txtBox_SecondHourNight.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.txtBox_SecondHourNight.Location = new System.Drawing.Point(512, 237);
             this.txtBox_SecondHourNight.Mask = "00:00";
             this.txtBox_SecondHourNight.Name = "txtBox_SecondHourNight";
-            this.txtBox_SecondHourNight.Size = new System.Drawing.Size(34, 20);
+            this.txtBox_SecondHourNight.Size = new System.Drawing.Size(33, 20);
             this.txtBox_SecondHourNight.TabIndex = 23;
             this.txtBox_SecondHourNight.ValidatingType = typeof(System.DateTime);
             // 
             // txtBox_FirstHourNight
             // 
-            this.txtBox_FirstHourNight.Location = new System.Drawing.Point(705, 172);
+            this.txtBox_FirstHourNight.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.txtBox_FirstHourNight.Location = new System.Drawing.Point(438, 237);
             this.txtBox_FirstHourNight.Mask = "00:00";
             this.txtBox_FirstHourNight.Name = "txtBox_FirstHourNight";
-            this.txtBox_FirstHourNight.Size = new System.Drawing.Size(34, 20);
+            this.txtBox_FirstHourNight.Size = new System.Drawing.Size(33, 20);
             this.txtBox_FirstHourNight.TabIndex = 22;
             this.txtBox_FirstHourNight.ValidatingType = typeof(System.DateTime);
             // 
             // label_Until
             // 
-            this.label_Until.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label_Until.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label_Until.AutoSize = true;
-            this.label_Until.Location = new System.Drawing.Point(745, 175);
+            this.label_Until.Location = new System.Drawing.Point(478, 240);
             this.label_Until.Name = "label_Until";
             this.label_Until.Size = new System.Drawing.Size(28, 13);
             this.label_Until.TabIndex = 21;
@@ -381,16 +427,16 @@
             // 
             // label_NightInterval
             // 
-            this.label_NightInterval.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label_NightInterval.AutoSize = true;
-            this.label_NightInterval.Location = new System.Drawing.Point(725, 152);
+            this.label_NightInterval.Location = new System.Drawing.Point(438, 220);
             this.label_NightInterval.Name = "label_NightInterval";
-            this.label_NightInterval.Size = new System.Drawing.Size(70, 13);
+            this.label_NightInterval.Size = new System.Drawing.Size(107, 14);
             this.label_NightInterval.TabIndex = 18;
             this.label_NightInterval.Text = "Night Interval";
+            this.label_NightInterval.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label_ApiToken
             // 
+            this.label_ApiToken.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label_ApiToken.AutoSize = true;
             this.label_ApiToken.Location = new System.Drawing.Point(6, 156);
             this.label_ApiToken.Name = "label_ApiToken";
@@ -400,21 +446,24 @@
             // 
             // txtBx_ApiToken
             // 
+            this.txtBx_ApiToken.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtBx_ApiToken.Location = new System.Drawing.Point(6, 172);
             this.txtBx_ApiToken.Name = "txtBx_ApiToken";
-            this.txtBx_ApiToken.Size = new System.Drawing.Size(542, 20);
+            this.txtBx_ApiToken.Size = new System.Drawing.Size(541, 20);
             this.txtBx_ApiToken.TabIndex = 16;
             // 
             // txtBx_Interval
             // 
+            this.txtBx_Interval.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtBx_Interval.Location = new System.Drawing.Point(412, 119);
             this.txtBx_Interval.Name = "txtBx_Interval";
-            this.txtBx_Interval.Size = new System.Drawing.Size(136, 20);
+            this.txtBx_Interval.Size = new System.Drawing.Size(135, 20);
             this.txtBx_Interval.TabIndex = 15;
             this.txtBx_Interval.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label_Interval
             // 
+            this.label_Interval.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label_Interval.AutoSize = true;
             this.label_Interval.Location = new System.Drawing.Point(409, 102);
             this.label_Interval.Name = "label_Interval";
@@ -424,9 +473,10 @@
             // 
             // btn_FindExecutable
             // 
+            this.btn_FindExecutable.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btn_FindExecutable.Location = new System.Drawing.Point(6, 64);
             this.btn_FindExecutable.Name = "btn_FindExecutable";
-            this.btn_FindExecutable.Size = new System.Drawing.Size(542, 23);
+            this.btn_FindExecutable.Size = new System.Drawing.Size(541, 23);
             this.btn_FindExecutable.TabIndex = 13;
             this.btn_FindExecutable.Text = "Find Executable";
             this.btn_FindExecutable.UseVisualStyleBackColor = true;
@@ -434,6 +484,7 @@
             // 
             // label_Language
             // 
+            this.label_Language.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label_Language.AutoSize = true;
             this.label_Language.Location = new System.Drawing.Point(6, 102);
             this.label_Language.Name = "label_Language";
@@ -443,15 +494,17 @@
             // 
             // cbx_Language
             // 
+            this.cbx_Language.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.cbx_Language.FormattingEnabled = true;
             this.cbx_Language.Location = new System.Drawing.Point(8, 118);
             this.cbx_Language.Name = "cbx_Language";
-            this.cbx_Language.Size = new System.Drawing.Size(137, 21);
+            this.cbx_Language.Size = new System.Drawing.Size(136, 21);
             this.cbx_Language.TabIndex = 11;
             this.cbx_Language.DropDown += new System.EventHandler(this.cbx_Language_DropDown);
             // 
             // label_WallpaperEngineExecutable
             // 
+            this.label_WallpaperEngineExecutable.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label_WallpaperEngineExecutable.AutoSize = true;
             this.label_WallpaperEngineExecutable.Location = new System.Drawing.Point(6, 22);
             this.label_WallpaperEngineExecutable.Name = "label_WallpaperEngineExecutable";
@@ -461,16 +514,17 @@
             // 
             // txtBx_WallpaperEngineExecutable
             // 
+            this.txtBx_WallpaperEngineExecutable.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtBx_WallpaperEngineExecutable.Location = new System.Drawing.Point(6, 38);
             this.txtBx_WallpaperEngineExecutable.Name = "txtBx_WallpaperEngineExecutable";
-            this.txtBx_WallpaperEngineExecutable.Size = new System.Drawing.Size(542, 20);
+            this.txtBx_WallpaperEngineExecutable.Size = new System.Drawing.Size(541, 20);
             this.txtBx_WallpaperEngineExecutable.TabIndex = 9;
             // 
             // label_City
             // 
-            this.label_City.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label_City.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label_City.AutoSize = true;
-            this.label_City.Location = new System.Drawing.Point(687, 102);
+            this.label_City.Location = new System.Drawing.Point(292, 220);
             this.label_City.Name = "label_City";
             this.label_City.Size = new System.Drawing.Size(24, 13);
             this.label_City.TabIndex = 8;
@@ -478,18 +532,18 @@
             // 
             // cbx_City
             // 
-            this.cbx_City.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbx_City.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.cbx_City.FormattingEnabled = true;
-            this.cbx_City.Location = new System.Drawing.Point(690, 118);
+            this.cbx_City.Location = new System.Drawing.Point(295, 236);
             this.cbx_City.Name = "cbx_City";
-            this.cbx_City.Size = new System.Drawing.Size(137, 21);
+            this.cbx_City.Size = new System.Drawing.Size(136, 21);
             this.cbx_City.TabIndex = 7;
             // 
             // label_State
             // 
-            this.label_State.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label_State.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label_State.AutoSize = true;
-            this.label_State.Location = new System.Drawing.Point(687, 62);
+            this.label_State.Location = new System.Drawing.Point(149, 220);
             this.label_State.Name = "label_State";
             this.label_State.Size = new System.Drawing.Size(32, 13);
             this.label_State.TabIndex = 6;
@@ -497,20 +551,20 @@
             // 
             // cbx_State
             // 
-            this.cbx_State.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbx_State.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.cbx_State.FormattingEnabled = true;
-            this.cbx_State.Location = new System.Drawing.Point(690, 78);
+            this.cbx_State.Location = new System.Drawing.Point(152, 236);
             this.cbx_State.Name = "cbx_State";
-            this.cbx_State.Size = new System.Drawing.Size(137, 21);
+            this.cbx_State.Size = new System.Drawing.Size(136, 21);
             this.cbx_State.TabIndex = 5;
             this.cbx_State.DropDown += new System.EventHandler(this.cbx_State_DropDown);
             this.cbx_State.DropDownClosed += new System.EventHandler(this.cbx_State_DropDownClosed);
             // 
             // label_Country
             // 
-            this.label_Country.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label_Country.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label_Country.AutoSize = true;
-            this.label_Country.Location = new System.Drawing.Point(687, 22);
+            this.label_Country.Location = new System.Drawing.Point(6, 220);
             this.label_Country.Name = "label_Country";
             this.label_Country.Size = new System.Drawing.Size(43, 13);
             this.label_Country.TabIndex = 4;
@@ -518,11 +572,11 @@
             // 
             // cbx_Country
             // 
-            this.cbx_Country.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbx_Country.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.cbx_Country.FormattingEnabled = true;
-            this.cbx_Country.Location = new System.Drawing.Point(690, 38);
+            this.cbx_Country.Location = new System.Drawing.Point(9, 236);
             this.cbx_Country.Name = "cbx_Country";
-            this.cbx_Country.Size = new System.Drawing.Size(137, 21);
+            this.cbx_Country.Size = new System.Drawing.Size(136, 21);
             this.cbx_Country.TabIndex = 3;
             this.cbx_Country.DropDown += new System.EventHandler(this.cbx_Country_DropDown);
             this.cbx_Country.DropDownClosed += new System.EventHandler(this.cbx_Country_DropDownClosed);
@@ -539,41 +593,75 @@
             this.Notify.Icon = ((System.Drawing.Icon)(resources.GetObject("Notify.Icon")));
             this.Notify.Text = "WeBe - WeatherVibe";
             this.Notify.Visible = true;
-            this.Notify.Click += new System.EventHandler(this.Notify_Click);
+            this.Notify.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Notify_MouseClick);
             // 
             // notify_ContextMenu
             // 
             this.notify_ContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.context_Start,
-            this.context_Stop});
+            this.context_Stop,
+            this.context_Options,
+            this.context_Exit});
             this.notify_ContextMenu.Name = "notify_ContextMenu";
-            this.notify_ContextMenu.Size = new System.Drawing.Size(106, 48);
+            this.notify_ContextMenu.Size = new System.Drawing.Size(181, 114);
             // 
             // context_Start
             // 
             this.context_Start.Name = "context_Start";
-            this.context_Start.Size = new System.Drawing.Size(105, 22);
+            this.context_Start.Size = new System.Drawing.Size(180, 22);
             this.context_Start.Text = "START";
             this.context_Start.Click += new System.EventHandler(this.context_Start_Click);
             // 
             // context_Stop
             // 
             this.context_Stop.Name = "context_Stop";
-            this.context_Stop.Size = new System.Drawing.Size(105, 22);
+            this.context_Stop.Size = new System.Drawing.Size(180, 22);
             this.context_Stop.Text = "STOP";
             this.context_Stop.Visible = false;
             this.context_Stop.Click += new System.EventHandler(this.context_Stop_Click);
+            // 
+            // context_Options
+            // 
+            this.context_Options.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.context_Profiles,
+            this.context_Settings});
+            this.context_Options.Name = "context_Options";
+            this.context_Options.Size = new System.Drawing.Size(180, 22);
+            this.context_Options.Text = "Options";
+            this.context_Options.Click += new System.EventHandler(this.context_Options_Click);
+            // 
+            // context_Profiles
+            // 
+            this.context_Profiles.Name = "context_Profiles";
+            this.context_Profiles.Size = new System.Drawing.Size(116, 22);
+            this.context_Profiles.Text = "Profiles";
+            this.context_Profiles.Click += new System.EventHandler(this.context_Profiles_Click);
+            // 
+            // context_Settings
+            // 
+            this.context_Settings.Name = "context_Settings";
+            this.context_Settings.Size = new System.Drawing.Size(116, 22);
+            this.context_Settings.Text = "Settings";
+            this.context_Settings.Click += new System.EventHandler(this.context_Settings_Click);
+            // 
+            // context_Exit
+            // 
+            this.context_Exit.Name = "context_Exit";
+            this.context_Exit.Size = new System.Drawing.Size(180, 22);
+            this.context_Exit.Text = "Exit";
+            this.context_Exit.Click += new System.EventHandler(this.context_Exit_Click);
             // 
             // WeBe
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(887, 453);
+            this.ClientSize = new System.Drawing.Size(607, 453);
             this.Controls.Add(this.tabControl_Principal);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "WeBe";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "WeBe - WeatherVibe";
+            this.Deactivate += new System.EventHandler(this.WeBe_Deactivate);
             this.tabControl_Principal.ResumeLayout(false);
             this.Home.ResumeLayout(false);
             this.Home.PerformLayout();
@@ -634,6 +722,13 @@
         public System.Windows.Forms.Label label_Until;
         public System.Windows.Forms.MaskedTextBox txtBox_SecondHourNight;
         public System.Windows.Forms.MaskedTextBox txtBox_FirstHourNight;
+        public System.Windows.Forms.ToolStripMenuItem context_Options;
+        public System.Windows.Forms.ToolStripMenuItem context_Profiles;
+        public System.Windows.Forms.ToolStripMenuItem context_Settings;
+        public System.Windows.Forms.CheckBox chkBox_StartMinimized;
+        public System.Windows.Forms.CheckBox chkBox_StartWithWindows;
+        public System.Windows.Forms.CheckBox chkBox_AutoStart;
+        public System.Windows.Forms.ToolStripMenuItem context_Exit;
     }
 }
 
