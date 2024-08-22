@@ -64,9 +64,12 @@ namespace WeBe___WeatherVibe
             
             WeBe.label_WallpaperEngineExecutable.Text = Language.DataBase.WallpaperEngineExecutable;
             WeBe.label_Interval.Text = Language.DataBase.ExecutionInterval;
+            WeBe.label_NightInterval.Text = Language.DataBase.NightInterval;
+            WeBe.label_Until.Text = Language.DataBase.Until;
 
             WeBe.label_Weather.Text = Language.DataBase.Weather;
             WeBe.chkBox_SimplifiedMode.Text = Language.DataBase.SimplifiedMode;
+            WeBe.chkBox_IsNight.Text = Language.DataBase.NightProfile;
             WeBe.label_ProfileName.Text = Language.DataBase.ProfileName;
             WeBe.btn_Add.Text = Language.DataBase.Add;
             WeBe.btn_Clear.Text = Language.DataBase.Clear;
@@ -199,9 +202,19 @@ namespace WeBe___WeatherVibe
             Thread =
             new Thread(async =>
             {
+                var location = string.Empty;
+                if (SaveSystem.SaveData.City.Length > 0)
+                    location = SaveSystem.SaveData.City;
+                else if (SaveSystem.SaveData.State.Length > 0)
+                    location = SaveSystem.SaveData.State;
+                else if (SaveSystem.SaveData.Country.Length > 0)
+                    location = SaveSystem.SaveData.Country;
+                else
+                    return;
+
                 Weather weather = null;
                 Profile profile = null;
-                string actualProfileName = string.Empty;
+                var actualProfileName = string.Empty;
                 while (true)
                 {
                     try
@@ -211,7 +224,7 @@ namespace WeBe___WeatherVibe
                         var teste2 = TimeSpan.Parse(SaveSystem.SaveData.SecondHourNight);
                         var isNight = hourNow > TimeSpan.Parse(SaveSystem.SaveData.FirstHourNight) && hourNow < TimeSpan.Parse(SaveSystem.SaveData.SecondHourNight);
 
-                        var actualWeather = Weather.GetWeatherByLocation(SaveSystem.SaveData.City);
+                        var actualWeather = Weather.GetWeatherByLocation(location);
                         if (weather == null || !weather.Equals(actualWeather))
                         {
                             weather = actualWeather;

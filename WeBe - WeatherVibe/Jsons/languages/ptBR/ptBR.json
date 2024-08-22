@@ -20,5 +20,8 @@
   "GetWeather": "Obter Clima",
   "Unknown": "Desconhecido",
   "ActualWeather": "Clima Atual",
-  "SimplifiedMode": "Modo Simplificado"
+  "SimplifiedMode": "Modo Simplificado",
+  "NightProfile": "Perfil Noturno",
+  "NightInterval": "Intervalo Noturno",
+  "Until": "Até"
 }

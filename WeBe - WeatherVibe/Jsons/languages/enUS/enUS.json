@@ -20,5 +20,8 @@
   "GetWeather": "Get Weather",
   "Unknown": "Unknown",
   "ActualWeather": "Actual Weather",
-  "SimplifiedMode": "Simplified Mode"
+  "SimplifiedMode": "Simplified Mode",
+  "NightProfile": "Night Profile",
+  "NightInterval": "Night Interval",
+  "Until": "Until"
 }
