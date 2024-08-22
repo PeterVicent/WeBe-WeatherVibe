@@ -66,6 +66,8 @@ namespace WeBe___WeatherVibe
                 Interval = Convert.ToInt32(txtBx_Interval.Text) * 60000,
                 WallpaperEngineExecutablePath = txtBx_WallpaperEngineExecutable.Text,
                 ApiToken = txtBx_ApiToken.Text,
+                FirstHourNight = txtBox_FirstHourNight.Text,
+                SecondHourNight = txtBox_SecondHourNight.Text,
                 SimplifiedMode = chkBox_SimplifiedMode.Checked
             };
             SaveSystem.Save();

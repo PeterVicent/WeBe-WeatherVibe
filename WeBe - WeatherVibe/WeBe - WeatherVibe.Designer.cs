@@ -51,6 +51,8 @@
             this.cbx_Weathers = new System.Windows.Forms.ComboBox();
             this.listBox_Profiles = new System.Windows.Forms.ListBox();
             this.Settings = new System.Windows.Forms.TabPage();
+            this.txtBox_SecondHourNight = new System.Windows.Forms.MaskedTextBox();
+            this.txtBox_FirstHourNight = new System.Windows.Forms.MaskedTextBox();
             this.label_Until = new System.Windows.Forms.Label();
             this.label_NightInterval = new System.Windows.Forms.Label();
             this.label_ApiToken = new System.Windows.Forms.Label();
@@ -73,8 +75,6 @@
             this.notify_ContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.context_Start = new System.Windows.Forms.ToolStripMenuItem();
             this.context_Stop = new System.Windows.Forms.ToolStripMenuItem();
-            this.txtBox_NightFirstHour = new System.Windows.Forms.MaskedTextBox();
-            this.txtBox_NightSecondHour = new System.Windows.Forms.MaskedTextBox();
             this.tabControl_Principal.SuspendLayout();
             this.Home.SuspendLayout();
             this.Options.SuspendLayout();
@@ -323,8 +323,8 @@
             // 
             // Settings
             // 
-            this.Settings.Controls.Add(this.txtBox_NightSecondHour);
-            this.Settings.Controls.Add(this.txtBox_NightFirstHour);
+            this.Settings.Controls.Add(this.txtBox_SecondHourNight);
+            this.Settings.Controls.Add(this.txtBox_FirstHourNight);
             this.Settings.Controls.Add(this.label_Until);
             this.Settings.Controls.Add(this.label_NightInterval);
             this.Settings.Controls.Add(this.label_ApiToken);
@@ -350,6 +350,24 @@
             this.Settings.TabIndex = 1;
             this.Settings.Text = "Settings";
             this.Settings.UseVisualStyleBackColor = true;
+            // 
+            // txtBox_SecondHourNight
+            // 
+            this.txtBox_SecondHourNight.Location = new System.Drawing.Point(779, 172);
+            this.txtBox_SecondHourNight.Mask = "00:00";
+            this.txtBox_SecondHourNight.Name = "txtBox_SecondHourNight";
+            this.txtBox_SecondHourNight.Size = new System.Drawing.Size(34, 20);
+            this.txtBox_SecondHourNight.TabIndex = 23;
+            this.txtBox_SecondHourNight.ValidatingType = typeof(System.DateTime);
+            // 
+            // txtBox_FirstHourNight
+            // 
+            this.txtBox_FirstHourNight.Location = new System.Drawing.Point(705, 172);
+            this.txtBox_FirstHourNight.Mask = "00:00";
+            this.txtBox_FirstHourNight.Name = "txtBox_FirstHourNight";
+            this.txtBox_FirstHourNight.Size = new System.Drawing.Size(34, 20);
+            this.txtBox_FirstHourNight.TabIndex = 22;
+            this.txtBox_FirstHourNight.ValidatingType = typeof(System.DateTime);
             // 
             // label_Until
             // 
@@ -546,24 +564,6 @@
             this.context_Stop.Visible = false;
             this.context_Stop.Click += new System.EventHandler(this.context_Stop_Click);
             // 
-            // txtBox_NightFirstHour
-            // 
-            this.txtBox_NightFirstHour.Location = new System.Drawing.Point(705, 172);
-            this.txtBox_NightFirstHour.Mask = "00:00";
-            this.txtBox_NightFirstHour.Name = "txtBox_NightFirstHour";
-            this.txtBox_NightFirstHour.Size = new System.Drawing.Size(34, 20);
-            this.txtBox_NightFirstHour.TabIndex = 22;
-            this.txtBox_NightFirstHour.ValidatingType = typeof(System.DateTime);
-            // 
-            // txtBox_NightSecondHour
-            // 
-            this.txtBox_NightSecondHour.Location = new System.Drawing.Point(779, 172);
-            this.txtBox_NightSecondHour.Mask = "00:00";
-            this.txtBox_NightSecondHour.Name = "txtBox_NightSecondHour";
-            this.txtBox_NightSecondHour.Size = new System.Drawing.Size(34, 20);
-            this.txtBox_NightSecondHour.TabIndex = 23;
-            this.txtBox_NightSecondHour.ValidatingType = typeof(System.DateTime);
-            // 
             // WeBe
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -631,8 +631,8 @@
         public System.Windows.Forms.CheckBox chkBox_IsNight;
         public System.Windows.Forms.Label label_NightInterval;
         public System.Windows.Forms.Label label_Until;
-        public System.Windows.Forms.MaskedTextBox txtBox_NightSecondHour;
-        public System.Windows.Forms.MaskedTextBox txtBox_NightFirstHour;
+        public System.Windows.Forms.MaskedTextBox txtBox_SecondHourNight;
+        public System.Windows.Forms.MaskedTextBox txtBox_FirstHourNight;
     }
 }
 

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
@@ -35,6 +36,8 @@ namespace WeBe___WeatherVibe
             WeBe.chkBox_SimplifiedMode.Checked = SaveSystem.SaveData.SimplifiedMode;
             WeBe.txtBx_WallpaperEngineExecutable.Text = WallpaperEngine.ExecutablePath;
             WeBe.txtBx_Interval.Text = (SaveSystem.SaveData.Interval / 60000).ToString();
+            WeBe.txtBox_FirstHourNight.Text = SaveSystem.SaveData.FirstHourNight;
+            WeBe.txtBox_SecondHourNight.Text = SaveSystem.SaveData.SecondHourNight;
 
             SetLanguageInButtonsAndLabels();
             LoadComboBoxsAndSetLanguage();
@@ -202,10 +205,10 @@ namespace WeBe___WeatherVibe
                 {
                     try
                     {
+                        var hourNow = DateTime.Now.TimeOfDay;
+                        var isNight = hourNow > TimeSpan.Parse(SaveSystem.SaveData.FirstHourNight) && hourNow < TimeSpan.Parse(SaveSystem.SaveData.SecondHourNight);
+
                         var actualWeather = Weather.GetWeatherByLocation(SaveSystem.SaveData.City);
-                        if (actualWeather == null)
-                            continue;
-                        
                         if (weather == null || !weather.Equals(actualWeather))
                         {
                             weather = actualWeather;
@@ -213,11 +216,13 @@ namespace WeBe___WeatherVibe
                                 profile = new Profile(weather.Data.Values.WeatherCode.ToString());
                         }
 
-                        if (profile == null || profile.ProfilesDay.Count <= 0 || weather == null)
+                        if (profile == null || weather == null || profile.ProfilesDay.Count <= 0 && profile.ProfilesNight.Count <= 0)
                             profile = new Profile(DefaultWeatherCode);
 
                         var random = new Random();
-                        var profileName = profile.ProfilesDay[random.Next(profile.ProfilesDay.Count - 1)];
+                        var profileName = isNight 
+                            ? profile.ProfilesNight[random.Next(profile.ProfilesNight.Count - 1)]
+                            : profile.ProfilesDay[random.Next(profile.ProfilesDay.Count - 1)];
                         if (!profileName.Equals(actualProfileName))
                         {
                             actualProfileName = profileName;

@@ -77,6 +77,12 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="Jsons\database.json" />
+    <None Include="Jsons\languages\enUS\enUS-Weather.json" />
+    <None Include="Jsons\languages\enUS\enUS.json" />
+    <None Include="Jsons\languages\languages.json" />
+    <None Include="Jsons\languages\ptBR\ptBR-Weather.json" />
+    <None Include="Jsons\languages\ptBR\ptBR.json" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -94,5 +100,6 @@
   <ItemGroup>
     <None Include="Resources\sunny.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

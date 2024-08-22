@@ -19,7 +19,7 @@ namespace WeBe___WeatherVibe.Classes
 
         internal static WeatherCodes GetWeatherCodesByLanguage()
         {
-            var jsonLanguage = File.ReadAllText($"{Application.StartupPath}\\language\\{SaveSystem.SaveData.Language.Value}\\{SaveSystem.SaveData.Language.Value}-Weather.json");
+            var jsonLanguage = File.ReadAllText($"{Application.StartupPath}\\languages\\{SaveSystem.SaveData.Language.Value}\\{SaveSystem.SaveData.Language.Value}-Weather.json");
 
             return JsonConvert.DeserializeObject<WeatherCodes>(jsonLanguage);
         }

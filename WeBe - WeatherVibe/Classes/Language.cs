@@ -77,7 +77,7 @@ namespace WeBe___WeatherVibe.Classes
         public static Dictionary<string, string> SupportedLanguages { get; set; }
 
         [JsonIgnore()]
-        private static readonly string FilePath = $"{Application.StartupPath}\\language";
+        private static readonly string FilePath = $"{Application.StartupPath}\\languages";
 
         [JsonIgnore()]
         public static Language DataBase { get; set; }
