@@ -103,22 +103,38 @@ namespace WeBe___WeatherVibe
         internal static void LoadComboBoxsAndSetLanguage()
         {
             WeBe.cbx_Country.Items.Clear();
+            WeBe.cbx_Country.Text = string.Empty;
             WeBe.cbx_State.Items.Clear();
+            WeBe.cbx_State.Text = string.Empty;
             WeBe.cbx_City.Items.Clear();
+            WeBe.cbx_City.Text = string.Empty;
             WeBe.cbx_Language.Items.Clear();
             WeBe.cbx_Weathers.Items.Clear();
 
-            WeBe.label_Country.Text = Language.DataBase.Country;
-            WeBe.cbx_Country.Items.Add(SaveSystem.SaveData.Country);
-            WeBe.cbx_Country.SelectedIndex = 0;
+            if (!SaveSystem.SaveData.Country.Equals(string.Empty))
+            {
+                WeBe.label_Country.Text = Language.DataBase.Country;
+                WeBe.cbx_Country.Items.Add(SaveSystem.SaveData.Country);
+                WeBe.cbx_Country.Text += SaveSystem.SaveData.Country;
+            }
 
-            WeBe.label_State.Text = Language.DataBase.State;
-            WeBe.cbx_State.Items.Add(SaveSystem.SaveData.State);
-            WeBe.cbx_State.SelectedIndex = 0;
-            
-            WeBe.label_City.Text = Language.DataBase.City;
-            WeBe.cbx_City.Items.Add(SaveSystem.SaveData.City);
-            WeBe.cbx_City.SelectedIndex = 0;
+            if (!SaveSystem.SaveData.State.Equals(string.Empty))
+            {
+                WeBe.label_State.Text = Language.DataBase.State;
+                WeBe.cbx_State.Items.Add(SaveSystem.SaveData.State);
+                WeBe.cbx_State.Text += SaveSystem.SaveData.State;
+            }
+            else
+                WeBe.cbx_State.Enabled = false;
+
+            if (!SaveSystem.SaveData.City.Equals(string.Empty))
+            {
+                WeBe.label_City.Text = Language.DataBase.City;
+                WeBe.cbx_City.Items.Add(SaveSystem.SaveData.City);
+                WeBe.cbx_City.Text += SaveSystem.SaveData.City;
+            }
+            else
+                WeBe.cbx_City.Enabled = false;
 
             WeBe.label_Language.Text = Language.DataBase.LanguageText;
             WeBe.cbx_Language.Items.Add(SaveSystem.SaveData.Language.Key);
@@ -142,8 +158,10 @@ namespace WeBe___WeatherVibe
                     WeBe.cbx_Country.Items.Add(country.Name);
 
                 WeBe.cbx_State.Items.Clear();
+                WeBe.cbx_State.Text = string.Empty;
                 WeBe.cbx_State.SelectedItem = string.Empty;
                 WeBe.cbx_City.Items.Clear();
+                WeBe.cbx_City.Text = string.Empty;
                 WeBe.cbx_City.SelectedItem = string.Empty;
                 WeBe.cbx_City.Enabled = false;
             }
@@ -155,7 +173,9 @@ namespace WeBe___WeatherVibe
                 Country.InstantiateDataBase();
 
             WeBe.cbx_State.Items.Clear();
+            WeBe.cbx_State.Text = string.Empty;
             WeBe.cbx_City.Items.Clear();
+            WeBe.cbx_City.Text = string.Empty;
             foreach (var state in Country.GetStatesByCountry(countryName))
             {
                 if (state.Name == null)
@@ -167,9 +187,11 @@ namespace WeBe___WeatherVibe
             if (WeBe.cbx_State.Items.Count == 0)
             {
                 WeBe.cbx_State.Items.Clear();
+                WeBe.cbx_State.Text = string.Empty;
                 WeBe.cbx_State.SelectedItem = string.Empty;
                 WeBe.cbx_State.Enabled = false;
                 WeBe.cbx_City.Items.Clear();
+                WeBe.cbx_City.Text = string.Empty;
                 WeBe.cbx_City.SelectedItem = string.Empty;
                 WeBe.cbx_City.Enabled = false;
             }
@@ -187,6 +209,7 @@ namespace WeBe___WeatherVibe
             if (WeBe.cbx_State.Items.Count <= 1)
             {
                 WeBe.cbx_State.Items.Clear();
+                WeBe.cbx_State.Text = string.Empty;
                 foreach (var state in Country.GetStatesByCountry(countryName))
                 {
                     if (state.Name == null)
@@ -203,6 +226,7 @@ namespace WeBe___WeatherVibe
                 Country.InstantiateDataBase();
 
             WeBe.cbx_City.Items.Clear();
+            WeBe.cbx_City.Text = string.Empty;
             foreach (var city in Country.GetCitiesByState(countryName, stateName))
             {
                 if (city.Name == null)
@@ -214,6 +238,7 @@ namespace WeBe___WeatherVibe
             if (WeBe.cbx_City.Items.Count == 0)
             {
                 WeBe.cbx_City.SelectedItem = string.Empty;
+                WeBe.cbx_City.Text = string.Empty;
                 WeBe.cbx_City.Enabled = false;
             }
             else

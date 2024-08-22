@@ -33,6 +33,9 @@ namespace WeBe___WeatherVibe
             Program.LoadComboBoxStateBySelectedCountry(cbx_Country.SelectedItem.ToString());
         }
 
+        private void cbx_Country_SelectedIndexChanged(object sender, EventArgs e)
+            => cbx_Country_DropDownClosed(sender, e);
+
         private void cbx_State_DropDown(object sender, EventArgs e)
         {
             if (cbx_Country.SelectedItem == null)
@@ -48,6 +51,9 @@ namespace WeBe___WeatherVibe
 
             Program.LoadComboBoxCityBySelectedState(cbx_Country.SelectedItem.ToString(), cbx_State.SelectedItem.ToString());
         }
+
+        private void cbx_State_SelectedIndexChanged(object sender, EventArgs e)
+            => cbx_State_DropDownClosed(sender, e);
 
         private void cbx_Language_DropDown(object sender, EventArgs e)
         {

@@ -398,7 +398,7 @@
             // txtBox_SecondHourNight
             // 
             this.txtBox_SecondHourNight.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txtBox_SecondHourNight.Location = new System.Drawing.Point(512, 237);
+            this.txtBox_SecondHourNight.Location = new System.Drawing.Point(510, 237);
             this.txtBox_SecondHourNight.Mask = "00:00";
             this.txtBox_SecondHourNight.Name = "txtBox_SecondHourNight";
             this.txtBox_SecondHourNight.Size = new System.Drawing.Size(33, 20);
@@ -408,7 +408,7 @@
             // txtBox_FirstHourNight
             // 
             this.txtBox_FirstHourNight.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txtBox_FirstHourNight.Location = new System.Drawing.Point(438, 237);
+            this.txtBox_FirstHourNight.Location = new System.Drawing.Point(436, 237);
             this.txtBox_FirstHourNight.Mask = "00:00";
             this.txtBox_FirstHourNight.Name = "txtBox_FirstHourNight";
             this.txtBox_FirstHourNight.Size = new System.Drawing.Size(33, 20);
@@ -419,7 +419,7 @@
             // 
             this.label_Until.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label_Until.AutoSize = true;
-            this.label_Until.Location = new System.Drawing.Point(478, 240);
+            this.label_Until.Location = new System.Drawing.Point(476, 240);
             this.label_Until.Name = "label_Until";
             this.label_Until.Size = new System.Drawing.Size(28, 13);
             this.label_Until.TabIndex = 21;
@@ -427,7 +427,7 @@
             // 
             // label_NightInterval
             // 
-            this.label_NightInterval.Location = new System.Drawing.Point(438, 220);
+            this.label_NightInterval.Location = new System.Drawing.Point(436, 220);
             this.label_NightInterval.Name = "label_NightInterval";
             this.label_NightInterval.Size = new System.Drawing.Size(107, 14);
             this.label_NightInterval.TabIndex = 18;
@@ -524,7 +524,7 @@
             // 
             this.label_City.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label_City.AutoSize = true;
-            this.label_City.Location = new System.Drawing.Point(292, 220);
+            this.label_City.Location = new System.Drawing.Point(291, 220);
             this.label_City.Name = "label_City";
             this.label_City.Size = new System.Drawing.Size(24, 13);
             this.label_City.TabIndex = 8;
@@ -534,7 +534,7 @@
             // 
             this.cbx_City.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.cbx_City.FormattingEnabled = true;
-            this.cbx_City.Location = new System.Drawing.Point(295, 236);
+            this.cbx_City.Location = new System.Drawing.Point(290, 236);
             this.cbx_City.Name = "cbx_City";
             this.cbx_City.Size = new System.Drawing.Size(136, 21);
             this.cbx_City.TabIndex = 7;
@@ -543,7 +543,7 @@
             // 
             this.label_State.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label_State.AutoSize = true;
-            this.label_State.Location = new System.Drawing.Point(149, 220);
+            this.label_State.Location = new System.Drawing.Point(148, 220);
             this.label_State.Name = "label_State";
             this.label_State.Size = new System.Drawing.Size(32, 13);
             this.label_State.TabIndex = 6;
@@ -553,11 +553,12 @@
             // 
             this.cbx_State.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.cbx_State.FormattingEnabled = true;
-            this.cbx_State.Location = new System.Drawing.Point(152, 236);
+            this.cbx_State.Location = new System.Drawing.Point(148, 236);
             this.cbx_State.Name = "cbx_State";
             this.cbx_State.Size = new System.Drawing.Size(136, 21);
             this.cbx_State.TabIndex = 5;
             this.cbx_State.DropDown += new System.EventHandler(this.cbx_State_DropDown);
+            this.cbx_State.SelectedIndexChanged += new System.EventHandler(this.cbx_State_SelectedIndexChanged);
             this.cbx_State.DropDownClosed += new System.EventHandler(this.cbx_State_DropDownClosed);
             // 
             // label_Country
@@ -574,11 +575,12 @@
             // 
             this.cbx_Country.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.cbx_Country.FormattingEnabled = true;
-            this.cbx_Country.Location = new System.Drawing.Point(9, 236);
+            this.cbx_Country.Location = new System.Drawing.Point(6, 236);
             this.cbx_Country.Name = "cbx_Country";
             this.cbx_Country.Size = new System.Drawing.Size(136, 21);
             this.cbx_Country.TabIndex = 3;
             this.cbx_Country.DropDown += new System.EventHandler(this.cbx_Country_DropDown);
+            this.cbx_Country.SelectedIndexChanged += new System.EventHandler(this.cbx_Country_SelectedIndexChanged);
             this.cbx_Country.DropDownClosed += new System.EventHandler(this.cbx_Country_DropDownClosed);
             // 
             // WallpaperEngine
@@ -603,19 +605,19 @@
             this.context_Options,
             this.context_Exit});
             this.notify_ContextMenu.Name = "notify_ContextMenu";
-            this.notify_ContextMenu.Size = new System.Drawing.Size(181, 114);
+            this.notify_ContextMenu.Size = new System.Drawing.Size(117, 92);
             // 
             // context_Start
             // 
             this.context_Start.Name = "context_Start";
-            this.context_Start.Size = new System.Drawing.Size(180, 22);
+            this.context_Start.Size = new System.Drawing.Size(116, 22);
             this.context_Start.Text = "START";
             this.context_Start.Click += new System.EventHandler(this.context_Start_Click);
             // 
             // context_Stop
             // 
             this.context_Stop.Name = "context_Stop";
-            this.context_Stop.Size = new System.Drawing.Size(180, 22);
+            this.context_Stop.Size = new System.Drawing.Size(116, 22);
             this.context_Stop.Text = "STOP";
             this.context_Stop.Visible = false;
             this.context_Stop.Click += new System.EventHandler(this.context_Stop_Click);
@@ -626,7 +628,7 @@
             this.context_Profiles,
             this.context_Settings});
             this.context_Options.Name = "context_Options";
-            this.context_Options.Size = new System.Drawing.Size(180, 22);
+            this.context_Options.Size = new System.Drawing.Size(116, 22);
             this.context_Options.Text = "Options";
             this.context_Options.Click += new System.EventHandler(this.context_Options_Click);
             // 
@@ -647,7 +649,7 @@
             // context_Exit
             // 
             this.context_Exit.Name = "context_Exit";
-            this.context_Exit.Size = new System.Drawing.Size(180, 22);
+            this.context_Exit.Size = new System.Drawing.Size(116, 22);
             this.context_Exit.Text = "Exit";
             this.context_Exit.Click += new System.EventHandler(this.context_Exit_Click);
             // 
