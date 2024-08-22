@@ -1,6 +1,6 @@
 {
   "weatherCode": {
-    "0": "Padr„o",
+    "0": "Padr√£o",
     "1000": "Claro, Ensolarado",
     "1100": "Principalmente Claro",
     "1101": "Parcialmente Nublado",
@@ -26,7 +26,7 @@
     "8000": "Tempestade"
   },
   "weatherCodeFullDay": {
-    "0": "Padr„o",
+    "0": "Padr√£o",
     "1000": "Claro, Ensolarado",
     "1100": "Principalmente Claro",
     "1101": "Parcialmente Nublado",
@@ -122,7 +122,7 @@
     "8000": "Tempestade"
   },
   "weatherCodeDay": {
-    "0": "Padr„o",
+    "0": "Padr√£o",
     "10000": "Claro, Ensolarado",
     "11000": "Principalmente Claro",
     "11010": "Parcialmente Nublado",
@@ -218,7 +218,7 @@
     "80000": "Tempestade"
   },
   "weatherCodeNight": {
-    "0": "Padr„o",
+    "0": "Padr√£o",
     "10001": "Claro",
     "11001": "Principalmente Claro",
     "11011": "Parcialmente Nublado",
@@ -314,7 +314,7 @@
     "80001": "Tempestade"
   },
   "weatherCodeSimplified": {
-    "0": "Padr„o",
+    "0": "Padr√£o",
     "91000": "Claro",
     "91001": "Nublado",
     "91002": "Claro, Nublado",

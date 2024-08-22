@@ -572,6 +572,7 @@
             this.Controls.Add(this.tabControl_Principal);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "WeBe";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "WeBe - WeatherVibe";
             this.tabControl_Principal.ResumeLayout(false);
             this.Home.ResumeLayout(false);

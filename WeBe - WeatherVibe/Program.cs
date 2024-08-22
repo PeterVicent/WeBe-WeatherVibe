@@ -35,6 +35,7 @@ namespace WeBe___WeatherVibe
 
             WeBe.chkBox_SimplifiedMode.Checked = SaveSystem.SaveData.SimplifiedMode;
             WeBe.txtBx_WallpaperEngineExecutable.Text = WallpaperEngine.ExecutablePath;
+            WeBe.txtBx_ApiToken.Text = SaveSystem.SaveData.ApiToken;
             WeBe.txtBx_Interval.Text = (SaveSystem.SaveData.Interval / 60000).ToString();
             WeBe.txtBox_FirstHourNight.Text = SaveSystem.SaveData.FirstHourNight;
             WeBe.txtBox_SecondHourNight.Text = SaveSystem.SaveData.SecondHourNight;
@@ -206,6 +207,8 @@ namespace WeBe___WeatherVibe
                     try
                     {
                         var hourNow = DateTime.Now.TimeOfDay;
+                        var teste = TimeSpan.Parse(SaveSystem.SaveData.FirstHourNight);
+                        var teste2 = TimeSpan.Parse(SaveSystem.SaveData.SecondHourNight);
                         var isNight = hourNow > TimeSpan.Parse(SaveSystem.SaveData.FirstHourNight) && hourNow < TimeSpan.Parse(SaveSystem.SaveData.SecondHourNight);
 
                         var actualWeather = Weather.GetWeatherByLocation(SaveSystem.SaveData.City);
@@ -216,17 +219,21 @@ namespace WeBe___WeatherVibe
                                 profile = new Profile(weather.Data.Values.WeatherCode.ToString());
                         }
 
-                        if (profile == null || weather == null || profile.ProfilesDay.Count <= 0 && profile.ProfilesNight.Count <= 0)
+                        if (profile == null || weather == null)
                             profile = new Profile(DefaultWeatherCode);
 
-                        var random = new Random();
-                        var profileName = isNight 
-                            ? profile.ProfilesNight[random.Next(profile.ProfilesNight.Count - 1)]
-                            : profile.ProfilesDay[random.Next(profile.ProfilesDay.Count - 1)];
-                        if (!profileName.Equals(actualProfileName))
+                        if ((!isNight && profile.ProfilesDay.Count > 0)  
+                        || (isNight && profile.ProfilesNight.Count > 0))
                         {
-                            actualProfileName = profileName;
-                            WallpaperEngine.StartAndSetProfile(profileName);
+                            var random = new Random();
+                            var profileName = isNight 
+                                ? profile.ProfilesNight[random.Next(profile.ProfilesNight.Count - 1)]
+                                : profile.ProfilesDay[random.Next(profile.ProfilesDay.Count - 1)];
+                            if (!profileName.Equals(actualProfileName))
+                            {
+                                actualProfileName = profileName;
+                                WallpaperEngine.StartAndSetProfile(profileName);
+                            }
                         }
 
                         Thread.Sleep(SaveSystem.SaveData.Interval);
