@@ -253,7 +253,13 @@ namespace WeBe___WeatherVibe
                         {
                             weather = actualWeather;
                             if (weather?.Data?.Values?.WeatherCode > 0)
-                                profile = new Profile(weather.Data.Values.WeatherCode.ToString());
+                            {
+                                var weatherCode = weather?.Data?.Values?.WeatherCode.ToString();
+                                if (SaveSystem.SaveData.SimplifiedMode)
+                                    Weather.WeatherCodes.DetailedToSimplified.TryGetValue(weatherCode, out weatherCode);
+
+                                profile = new Profile(weatherCode);
+                            }
                         }
 
                         if (profile == null || weather == null)
