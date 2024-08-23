@@ -6,26 +6,33 @@ O projeto é totalmente open-source e pensado em performance, sendo extremamente
 
 Climas simplificados com seus respectivos códigos e descrições detalhadas:
 
-- **Claro (1000)**:
+- **Claro (91000)**:
   - Claro, Ensolarado (1000)
   - Principalmente Claro (1100)
 
-- **Nublado (1001)**:
+- **Claro com Chuva (91100)**:
+  - Principalmente Claro e Chuva (4209)
+  - Principalmente Claro e Garoa (4203)
+  - Principalmente Claro e Chuva Leve (4213)
+  - Principalmente Claro e Chuva Forte (4211)
+
+- **Nublado (91100)**:
   - Nublado (1001)
   - Parcialmente Nublado (1101)
   - Principalmente Nublado (1102)
 
-- **Claro, Nublado (1002)**:
+- **Claro, Nublado (91002)**:
   - Principalmente Claro e Parcialmente Nublado (1103)
 
-- **Nublado com Chuva (1003)**:
+- **Nublado com Chuva (91003)**:
   - Parcialmente Nublado e Chuva (4208)
   - Principalmente Nublado e Chuva (4210)
-  - Principalmente Claro e Chuva (4209)
   - Parcialmente Nublado e Chuva Leve (4214)
   - Principalmente Nublado e Chuva Leve (4215)
+  - Principalmente Nublado e Garoa (4205)
+  - Principalmente Nublado e Chuva Forte (4212)
 
-- **Nevoeiro (2000)**:
+- **Nevoeiro (92000)**:
   - Nevoeiro (2000)
   - Nevoeiro Leve (2100)
   - Principalmente Claro e Nevoeiro Leve (2101)
@@ -35,24 +42,19 @@ Climas simplificados com seus respectivos códigos e descrições detalhadas:
   - Parcialmente Nublado e Nevoeiro (2107)
   - Principalmente Nublado e Nevoeiro (2108)
 
-- **Garoa (4000)**:
+- **Garoa (94000)**:
   - Garoa (4000)
   - Parcialmente Nublado e Garoa (4204)
-  - Principalmente Claro e Garoa (4203)
-  - Principalmente Nublado e Garoa (4205)
 
-- **Chuva (4001)**:
+- **Chuva (94001)**:
   - Chuva (4001)
   - Chuva Leve (4200)
-  - Principalmente Claro e Chuva Leve (4213)
 
-- **Chuva Forte (4201)**:
+- **Chuva Forte (94201)**:
   - Chuva Forte (4201)
   - Parcialmente Nublado e Chuva Forte (4202)
-  - Principalmente Claro e Chuva Forte (4211)
-  - Principalmente Nublado e Chuva Forte (4212)
 
-- **Neve (5000)**:
+- **Neve (95000)**:
   - Neve (5000)
   - Flocos de Neve (5001)
   - Neve Leve (5100)
@@ -72,7 +74,7 @@ Climas simplificados com seus respectivos códigos e descrições detalhadas:
   - Neve e Chuva Congelante (5114)
   - Neve e Granizo (5112)
 
-- **Garoa Congelante (6000)**:
+- **Garoa Congelante (96000)**:
   - Garoa Congelante (6000)
   - Parcialmente Nublado e Garoa Congelante (6002)
   - Principalmente Claro e Garoa Congelante (6003)
@@ -83,7 +85,7 @@ Climas simplificados com seus respectivos códigos e descrições detalhadas:
   - Parcialmente Nublado e Chuva Congelante Leve (6203)
   - Principalmente Nublado e Chuva Congelante Leve (6209)
 
-- **Chuva Congelante (6001)**:
+- **Chuva Congelante (96001)**:
   - Chuva Congelante (6001)
   - Garoa e Chuva Congelante (6212)
   - Chuva Leve e Chuva Congelante (6220)
@@ -95,7 +97,7 @@ Climas simplificados com seus respectivos códigos e descrições detalhadas:
   - Parcialmente Nublado e Chuva Congelante Forte (6202)
   - Principalmente Nublado e Chuva Congelante Forte (6208)
 
-- **Granizo (7000)**:
+- **Granizo (97000)**:
   - Granizo (7000)
   - Granizo Leve (7102)
   - Parcialmente Nublado e Granizo Leve (7111)
@@ -110,7 +112,7 @@ Climas simplificados com seus respectivos códigos e descrições detalhadas:
   - Parcialmente Nublado e Granizo Pesado (7114)
   - Principalmente Nublado e Granizo Pesado (7116)
 
-- **Tempestade (8000)**:
+- **Tempestade (98000)**:
   - Tempestade (8000)
   - Principalmente Claro e Tempestade (8001)
   - Parcialmente Nublado e Tempestade (8003)
