@@ -29,5 +29,9 @@
   "StartMinimized": "Iniciar minimizado",
   "AutoStart": "INICIAR Automaticamente",
   "StartWithWindows": "Iniciar com o Windows",
-  "Exit": "Sair"
+  "Exit": "Sair",
+  "RainIntensity": "Intensidade da Chuva",
+  "SnowIntensity": "Intensidade da Nave",
+  "Temperature": "Temperatura",
+  "Powered": "Icones e API disponibilizados por"
 }

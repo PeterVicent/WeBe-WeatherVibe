@@ -33,6 +33,7 @@
             this.btn_Save = new System.Windows.Forms.Button();
             this.tabControl_Principal = new System.Windows.Forms.TabControl();
             this.Home = new System.Windows.Forms.TabPage();
+            this.picBox_Weather = new System.Windows.Forms.PictureBox();
             this.label_ActualWeather = new System.Windows.Forms.Label();
             this.label_ActualWeatherHeader = new System.Windows.Forms.Label();
             this.btn_GetWeather = new System.Windows.Forms.Button();
@@ -82,17 +83,20 @@
             this.context_Profiles = new System.Windows.Forms.ToolStripMenuItem();
             this.context_Settings = new System.Windows.Forms.ToolStripMenuItem();
             this.context_Exit = new System.Windows.Forms.ToolStripMenuItem();
-            this.label1 = new System.Windows.Forms.Label();
+            this.label_Powered = new System.Windows.Forms.Label();
             this.imageList = new System.Windows.Forms.ImageList(this.components);
-            this.picBox_Weather = new System.Windows.Forms.PictureBox();
+            this.label_RainIntensity = new System.Windows.Forms.Label();
+            this.label_SnowIntensity = new System.Windows.Forms.Label();
+            this.label_Temperature = new System.Windows.Forms.Label();
+            this.label_LocationWeather = new System.Windows.Forms.Label();
             this.tabControl_Principal.SuspendLayout();
             this.Home.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picBox_Weather)).BeginInit();
             this.Options.SuspendLayout();
             this.tabControl_Configuration.SuspendLayout();
             this.Profiles.SuspendLayout();
             this.Settings.SuspendLayout();
             this.notify_ContextMenu.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picBox_Weather)).BeginInit();
             this.SuspendLayout();
             // 
             // btn_Save
@@ -122,6 +126,10 @@
             // Home
             // 
             this.Home.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.Home.Controls.Add(this.label_LocationWeather);
+            this.Home.Controls.Add(this.label_Temperature);
+            this.Home.Controls.Add(this.label_SnowIntensity);
+            this.Home.Controls.Add(this.label_RainIntensity);
             this.Home.Controls.Add(this.picBox_Weather);
             this.Home.Controls.Add(this.label_ActualWeather);
             this.Home.Controls.Add(this.label_ActualWeatherHeader);
@@ -136,11 +144,22 @@
             this.Home.Text = "Home";
             this.Home.UseVisualStyleBackColor = true;
             // 
+            // picBox_Weather
+            // 
+            this.picBox_Weather.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.picBox_Weather.Image = global::WeBe___WeatherVibe.Properties.Resources.sunny;
+            this.picBox_Weather.Location = new System.Drawing.Point(215, 53);
+            this.picBox_Weather.Name = "picBox_Weather";
+            this.picBox_Weather.Size = new System.Drawing.Size(144, 144);
+            this.picBox_Weather.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picBox_Weather.TabIndex = 5;
+            this.picBox_Weather.TabStop = false;
+            // 
             // label_ActualWeather
             // 
             this.label_ActualWeather.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label_ActualWeather.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_ActualWeather.Location = new System.Drawing.Point(9, 212);
+            this.label_ActualWeather.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_ActualWeather.Location = new System.Drawing.Point(9, 206);
             this.label_ActualWeather.Name = "label_ActualWeather";
             this.label_ActualWeather.Size = new System.Drawing.Size(560, 16);
             this.label_ActualWeather.TabIndex = 4;
@@ -151,7 +170,7 @@
             // 
             this.label_ActualWeatherHeader.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label_ActualWeatherHeader.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_ActualWeatherHeader.Location = new System.Drawing.Point(6, 31);
+            this.label_ActualWeatherHeader.Location = new System.Drawing.Point(6, 25);
             this.label_ActualWeatherHeader.Name = "label_ActualWeatherHeader";
             this.label_ActualWeatherHeader.Size = new System.Drawing.Size(563, 18);
             this.label_ActualWeatherHeader.TabIndex = 3;
@@ -162,7 +181,7 @@
             // 
             this.btn_GetWeather.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btn_GetWeather.Enabled = false;
-            this.btn_GetWeather.Location = new System.Drawing.Point(242, 259);
+            this.btn_GetWeather.Location = new System.Drawing.Point(244, 338);
             this.btn_GetWeather.Name = "btn_GetWeather";
             this.btn_GetWeather.Size = new System.Drawing.Size(91, 23);
             this.btn_GetWeather.TabIndex = 2;
@@ -659,16 +678,16 @@
             this.context_Exit.Text = "Exit";
             this.context_Exit.Click += new System.EventHandler(this.context_Exit_Click);
             // 
-            // label1
+            // label_Powered
             // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.label_Powered.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.label1.Location = new System.Drawing.Point(16, 439);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(575, 13);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "Icons and API powered by Tomorrow.io";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label_Powered.Location = new System.Drawing.Point(16, 438);
+            this.label_Powered.Name = "label_Powered";
+            this.label_Powered.Size = new System.Drawing.Size(575, 13);
+            this.label_Powered.TabIndex = 5;
+            this.label_Powered.Text = "Icons and API powered by Tomorrow.io";
+            this.label_Powered.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // imageList
             // 
@@ -827,23 +846,56 @@
             this.imageList.Images.SetKeyName(150, "80030_tstorm_partly_cloudy_large@2x.png");
             this.imageList.Images.SetKeyName(151, "80031_tstorm_partly_cloudy_large@2x.png");
             // 
-            // picBox_Weather
+            // label_RainIntensity
             // 
-            this.picBox_Weather.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.picBox_Weather.Image = global::WeBe___WeatherVibe.Properties.Resources.sunny;
-            this.picBox_Weather.Location = new System.Drawing.Point(215, 59);
-            this.picBox_Weather.Name = "picBox_Weather";
-            this.picBox_Weather.Size = new System.Drawing.Size(144, 144);
-            this.picBox_Weather.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.picBox_Weather.TabIndex = 5;
-            this.picBox_Weather.TabStop = false;
+            this.label_RainIntensity.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label_RainIntensity.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_RainIntensity.Location = new System.Drawing.Point(9, 228);
+            this.label_RainIntensity.Name = "label_RainIntensity";
+            this.label_RainIntensity.Size = new System.Drawing.Size(560, 16);
+            this.label_RainIntensity.TabIndex = 6;
+            this.label_RainIntensity.Text = "Rain Intensity: 0";
+            this.label_RainIntensity.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label_SnowIntensity
+            // 
+            this.label_SnowIntensity.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label_SnowIntensity.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_SnowIntensity.Location = new System.Drawing.Point(9, 244);
+            this.label_SnowIntensity.Name = "label_SnowIntensity";
+            this.label_SnowIntensity.Size = new System.Drawing.Size(560, 16);
+            this.label_SnowIntensity.TabIndex = 7;
+            this.label_SnowIntensity.Text = "Snow Intensity: 0";
+            this.label_SnowIntensity.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label_Temperature
+            // 
+            this.label_Temperature.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label_Temperature.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_Temperature.Location = new System.Drawing.Point(9, 259);
+            this.label_Temperature.Name = "label_Temperature";
+            this.label_Temperature.Size = new System.Drawing.Size(560, 16);
+            this.label_Temperature.TabIndex = 8;
+            this.label_Temperature.Text = "Temperature: 0";
+            this.label_Temperature.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label_LocationWeather
+            // 
+            this.label_LocationWeather.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label_LocationWeather.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_LocationWeather.Location = new System.Drawing.Point(9, 285);
+            this.label_LocationWeather.Name = "label_LocationWeather";
+            this.label_LocationWeather.Size = new System.Drawing.Size(560, 44);
+            this.label_LocationWeather.TabIndex = 9;
+            this.label_LocationWeather.Text = "Desconhecido";
+            this.label_LocationWeather.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // WeBe
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(607, 453);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.label_Powered);
             this.Controls.Add(this.tabControl_Principal);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "WeBe";
@@ -852,6 +904,7 @@
             this.Deactivate += new System.EventHandler(this.WeBe_Deactivate);
             this.tabControl_Principal.ResumeLayout(false);
             this.Home.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.picBox_Weather)).EndInit();
             this.Options.ResumeLayout(false);
             this.tabControl_Configuration.ResumeLayout(false);
             this.Profiles.ResumeLayout(false);
@@ -859,7 +912,6 @@
             this.Settings.ResumeLayout(false);
             this.Settings.PerformLayout();
             this.notify_ContextMenu.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.picBox_Weather)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -919,7 +971,11 @@
         public System.Windows.Forms.ToolStripMenuItem context_Exit;
         public System.Windows.Forms.ImageList imageList;
         public System.Windows.Forms.PictureBox picBox_Weather;
-        public System.Windows.Forms.Label label1;
+        public System.Windows.Forms.Label label_Powered;
+        public System.Windows.Forms.Label label_RainIntensity;
+        public System.Windows.Forms.Label label_LocationWeather;
+        public System.Windows.Forms.Label label_Temperature;
+        public System.Windows.Forms.Label label_SnowIntensity;
     }
 }
 

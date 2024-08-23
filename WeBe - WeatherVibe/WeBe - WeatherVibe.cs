@@ -182,9 +182,7 @@ namespace WeBe___WeatherVibe
             else
                 return;
 
-            var actualWeather = Weather.GetWeatherByLocation(location);
-            var weatherCode = Weather.WeatherCodes.WeatherCodeFullDay.FirstOrDefault(w => w.Key.Equals(actualWeather.Data.Values.WeatherCode.ToString()));
-            Program.SetWeatherInHome(weatherCode.Key);
+            Program.SetWeatherInHome(Weather.GetWeatherByLocation(location));
         }
 
         private void Notify_MouseClick(object sender, MouseEventArgs e)

@@ -63,8 +63,11 @@ namespace WeBe___WeatherVibe
 
         internal static void SetLanguageInButtonsAndLabels()
         {
+            WeBe.label_Powered.Text = $"{Language.DataBase.Powered} Tomorrow.io";
+
             WeBe.label_ActualWeatherHeader.Text = Language.DataBase.ActualWeather;
             WeBe.label_ActualWeather.Text = Language.DataBase.Unknown;
+            WeBe.label_LocationWeather.Text = Language.DataBase.Unknown;
 
             WeBe.btn_GetWeather.Text = Language.DataBase.GetWeather;
             WeBe.btn_Save.Text = Language.DataBase.Save;
@@ -270,12 +273,12 @@ namespace WeBe___WeatherVibe
                         if (weather?.Data?.Values?.WeatherCode > 0)
                         {
                             var weatherCode = weather.Data.Values.WeatherCode.ToString();
-                            SetWeatherInHome(weatherCode);
-
                             if (SaveSystem.SaveData.SimplifiedMode)
                                 Weather.WeatherCodes.DetailedToSimplified.TryGetValue(weatherCode, out weatherCode);
 
                             profile = new Profile(weatherCode);
+                            
+                            SetWeatherInHome(weather);
                         }
                     }
 
@@ -332,14 +335,14 @@ namespace WeBe___WeatherVibe
             WeBe.context_Stop.Visible = started;
         }
 
-        internal static void SetWeatherInHome(string weatherCode)
+        internal static void SetWeatherInHome(Weather weather)
         {
-            var actualWeather = Weather.WeatherCodes.WeatherCodeFullDay.FirstOrDefault(w => w.Key == weatherCode);
+            var weatherCode = Weather.WeatherCodes.WeatherCodeFullDay.FirstOrDefault(w => w.Key == weather.Data.Values.WeatherCode.ToString());
 
             Image image = null;
             for (int i = 0; i < WeBe.imageList.Images.Count; i++)
             {
-                if (WeBe.imageList.Images.Keys[i].Contains(actualWeather.Key))
+                if (WeBe.imageList.Images.Keys[i].Contains(weatherCode.Key))
                 {
                     image = WeBe.imageList.Images[i];
                     break;
@@ -349,7 +352,11 @@ namespace WeBe___WeatherVibe
             if (image == null)
                 return;
 
-            WeBe.label_ActualWeather.Text = actualWeather.Value;
+            WeBe.label_ActualWeather.Text = weatherCode.Value;
+            WeBe.label_RainIntensity.Text = $"{Language.DataBase.RainIntensity}: {weather.Data.Values.RainIntensity}";
+            WeBe.label_SnowIntensity.Text = $"{Language.DataBase.SnowIntensity}: {weather.Data.Values.SnowIntensity}";
+            WeBe.label_Temperature.Text = $"{Language.DataBase.Temperature}: {weather.Data.Values.Temperature}";
+            WeBe.label_LocationWeather.Text = $"{weather.Location.Name}";
             WeBe.picBox_Weather.Image = image;
         }
     }

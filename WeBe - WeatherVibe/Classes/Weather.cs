@@ -15,8 +15,8 @@ namespace WeBe___WeatherVibe.Classes
         [JsonIgnore()]
         public static WeatherCodes WeatherCodes { get; set; }
 
-        //[JsonProperty("location")]
-        //public Location Location { get; set; }
+        [JsonProperty("location")]
+        public Location Location { get; set; }
 
         internal static WeatherCodes GetWeatherCodesByLanguage()
         {
@@ -49,22 +49,22 @@ namespace WeBe___WeatherVibe.Classes
         public Values Values { get; set; }
     }
 
-    //public class Location
-    //{
-    //    [JsonProperty("name")]
-    //    public string Name { get; set; }
-    //}
+    public class Location
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+    }
 
     public class Values
     {
         [JsonProperty("rainIntensity")]
-        public int RainIntensity { get; set; }
+        public float RainIntensity { get; set; }
 
         [JsonProperty("snowIntensity")]
-        public int SnowIntensity { get; set; }
+        public float SnowIntensity { get; set; }
 
         [JsonProperty("temperature")]
-        public double Temperature { get; set; }
+        public float Temperature { get; set; }
 
         [JsonProperty("weatherCode")]
         public int WeatherCode { get; set; }

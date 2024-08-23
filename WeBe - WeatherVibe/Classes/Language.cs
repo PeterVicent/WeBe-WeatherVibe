@@ -39,6 +39,10 @@ namespace WeBe___WeatherVibe.Classes
         public string AutoStart { get; set; }
         public string StartWithWindows { get; set; }
         public string Exit { get; set; }
+        public string RainIntensity { get; set; }
+        public string SnowIntensity { get; set; }
+        public string Temperature { get; set; }
+        public string Powered { get; set; }
 
         [JsonIgnore()]
         public static Dictionary<string, string> SupportedLanguages { get; set; }

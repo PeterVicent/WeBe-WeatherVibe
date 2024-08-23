@@ -29,5 +29,9 @@
   "StartMinimized": "Start minimized",
   "AutoStart": "Auto START",
   "StartWithWindows": "Start with Windows",
-  "Exit": "Exit"
+  "Exit": "Exit",
+  "RainIntensity": "Rain Intensity",
+  "SnowIntensity": "Snow Intensity",
+  "Temperature": "Temperature",
+  "Powered": "Icons and API powered by"
 }
