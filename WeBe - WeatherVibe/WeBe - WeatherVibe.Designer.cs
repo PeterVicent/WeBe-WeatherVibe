@@ -138,6 +138,7 @@
             // 
             // label_ActualWeather
             // 
+            this.label_ActualWeather.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label_ActualWeather.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_ActualWeather.Location = new System.Drawing.Point(9, 212);
             this.label_ActualWeather.Name = "label_ActualWeather";
@@ -148,6 +149,7 @@
             // 
             // label_ActualWeatherHeader
             // 
+            this.label_ActualWeatherHeader.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label_ActualWeatherHeader.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_ActualWeatherHeader.Location = new System.Drawing.Point(6, 31);
             this.label_ActualWeatherHeader.Name = "label_ActualWeatherHeader";
@@ -158,6 +160,7 @@
             // 
             // btn_GetWeather
             // 
+            this.btn_GetWeather.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btn_GetWeather.Enabled = false;
             this.btn_GetWeather.Location = new System.Drawing.Point(242, 259);
             this.btn_GetWeather.Name = "btn_GetWeather";
@@ -658,6 +661,8 @@
             // 
             // label1
             // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.Location = new System.Drawing.Point(16, 439);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(575, 13);
@@ -824,9 +829,12 @@
             // 
             // picBox_Weather
             // 
+            this.picBox_Weather.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.picBox_Weather.Image = global::WeBe___WeatherVibe.Properties.Resources.sunny;
             this.picBox_Weather.Location = new System.Drawing.Point(215, 59);
             this.picBox_Weather.Name = "picBox_Weather";
             this.picBox_Weather.Size = new System.Drawing.Size(144, 144);
+            this.picBox_Weather.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picBox_Weather.TabIndex = 5;
             this.picBox_Weather.TabStop = false;
             // 
