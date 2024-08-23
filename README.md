@@ -11,7 +11,7 @@ Climas simplificados com seus respectivos códigos e descrições detalhadas:
   - Principalmente Claro (1100)
 
 - **Claro com Chuva (91100)**:
-  - Principalmente Claro e Chuvisco (4203)
+  - Principalmente Claro e Garoa (4203)
   - Principalmente Claro e Chuva (4213)
   - Principalmente Claro e Chuva Forte (4211)
 
@@ -24,7 +24,7 @@ Climas simplificados com seus respectivos códigos e descrições detalhadas:
   - Parcialmente Nublado e Principalmente Claro (1103)
 
 - **Nublado com Chuva (91003)**:
-  - Principalmente Nublado e Chuvisco (4205)
+  - Principalmente Nublado e Garoa (4205)
   - Parcialmente Nublado e Chuva (4208)
   - Principalmente Nublado e Chuva (4210)
   - Parcialmente Nublado e Chuva Forte (4202)
@@ -40,9 +40,9 @@ Climas simplificados com seus respectivos códigos e descrições detalhadas:
   - Principalmente Nublado e Nevoeiro (2108)
   - Nevoeiro (2000)
 
-- **Chuvisco (94000)**:
-  - Parcialmente Nublado e Chuvisco (4204)
-  - Chuvisco (4000)
+- **Garoa (94000)**:
+  - Parcialmente Nublado e Garoa (4204)
+  - Garoa (4000)
 
 - **Chuva (94001)**:
   - Chuva Leve (4200)
@@ -60,12 +60,12 @@ Climas simplificados com seus respectivos códigos e descrições detalhadas:
   - Principalmente Claro e Neve Leve (5102)
   - Parcialmente Nublado e Neve Leve (5103)
   - Principalmente Nublado e Neve Leve (5104)
-  - Chuvisco e Neve Leve (5122)
+  - Garoa e Neve Leve (5122)
   - Principalmente Claro e Neve (5105)
   - Parcialmente Nublado e Neve (5106)
   - Principalmente Nublado e Neve (5107)
   - Neve (5000)
-  - Chuvisco e Neve (5110)
+  - Garoa e Neve (5110)
   - Chuva e Neve (5108)
   - Neve e Chuva Congelante (5114)
   - Neve e Granizo (5112)
@@ -76,13 +76,13 @@ Climas simplificados com seus respectivos códigos e descrições detalhadas:
   - Parcialmente Nublado e Neve Forte (5120)
   - Principalmente Nublado e Neve Forte (5121)
 
-- **Chuvisco Congelante (96000)**:
-  - Chuvisco Congelante (6000)
-  - Principalmente Claro e Chuvisco Congelante (6003)
-  - Parcialmente Nublado e Chuvisco Congelante (6002)
-  - Principalmente Nublado e Chuvisco Congelante (6004)
-  - Chuvisco e Chuvisco Congelante (6204)
-  - Chuva Leve e Chuvisco Congelante (6206)
+- **Garoa Congelante (96000)**:
+  - Garoa Congelante (6000)
+  - Principalmente Claro e Garoa Congelante (6003)
+  - Parcialmente Nublado e Garoa Congelante (6002)
+  - Principalmente Nublado e Garoa Congelante (6004)
+  - Garoa e Garoa Congelante (6204)
+  - Chuva Leve e Garoa Congelante (6206)
 
 - **Chuva Congelante (96001)**:
   - Principalmente Claro e Chuva Congelante Leve (6205)
@@ -93,7 +93,7 @@ Climas simplificados com seus respectivos códigos e descrições detalhadas:
   - Parcialmente Nublado e Chuva Congelante (6214)
   - Principalmente Nublado e Chuva Congelante (6215)
   - Chuva Congelante (6001)
-  - Chuvisco e Chuva Congelante (6212)
+  - Garoa e Chuva Congelante (6212)
   - Chuva Leve e Chuva Congelante (6220)
   - Chuva e Chuva Congelante (6222)
   - Principalmente Claro e Chuva Congelante Forte (6207)
@@ -110,7 +110,7 @@ Climas simplificados com seus respectivos códigos e descrições detalhadas:
   - Parcialmente Nublado e Granizo (7107)
   - Principalmente Nublado e Granizo (7109)
   - Granizo (7000)
-  - Chuvisco e Granizo (7105)
+  - Garoa e Granizo (7105)
   - Chuva Congelante e Granizo (7106)
   - Chuva Leve e Granizo (7115)
   - Chuva e Granizo (7117)
