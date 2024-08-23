@@ -82,6 +82,9 @@
             this.context_Profiles = new System.Windows.Forms.ToolStripMenuItem();
             this.context_Settings = new System.Windows.Forms.ToolStripMenuItem();
             this.context_Exit = new System.Windows.Forms.ToolStripMenuItem();
+            this.label1 = new System.Windows.Forms.Label();
+            this.imageList = new System.Windows.Forms.ImageList(this.components);
+            this.picBox_Weather = new System.Windows.Forms.PictureBox();
             this.tabControl_Principal.SuspendLayout();
             this.Home.SuspendLayout();
             this.Options.SuspendLayout();
@@ -89,6 +92,7 @@
             this.Profiles.SuspendLayout();
             this.Settings.SuspendLayout();
             this.notify_ContextMenu.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picBox_Weather)).BeginInit();
             this.SuspendLayout();
             // 
             // btn_Save
@@ -117,8 +121,8 @@
             // 
             // Home
             // 
-            this.Home.BackgroundImage = global::WeBe___WeatherVibe.Properties.Resources.sunny;
             this.Home.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.Home.Controls.Add(this.picBox_Weather);
             this.Home.Controls.Add(this.label_ActualWeather);
             this.Home.Controls.Add(this.label_ActualWeatherHeader);
             this.Home.Controls.Add(this.btn_GetWeather);
@@ -134,29 +138,28 @@
             // 
             // label_ActualWeather
             // 
-            this.label_ActualWeather.AutoSize = true;
             this.label_ActualWeather.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_ActualWeather.Location = new System.Drawing.Point(6, 58);
+            this.label_ActualWeather.Location = new System.Drawing.Point(9, 212);
             this.label_ActualWeather.Name = "label_ActualWeather";
-            this.label_ActualWeather.Size = new System.Drawing.Size(95, 16);
+            this.label_ActualWeather.Size = new System.Drawing.Size(560, 16);
             this.label_ActualWeather.TabIndex = 4;
             this.label_ActualWeather.Text = "Desconhecido";
             this.label_ActualWeather.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label_ActualWeatherHeader
             // 
-            this.label_ActualWeatherHeader.AutoSize = true;
             this.label_ActualWeatherHeader.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_ActualWeatherHeader.Location = new System.Drawing.Point(6, 31);
             this.label_ActualWeatherHeader.Name = "label_ActualWeatherHeader";
-            this.label_ActualWeatherHeader.Size = new System.Drawing.Size(122, 18);
+            this.label_ActualWeatherHeader.Size = new System.Drawing.Size(563, 18);
             this.label_ActualWeatherHeader.TabIndex = 3;
             this.label_ActualWeatherHeader.Text = "Actual Weather";
+            this.label_ActualWeatherHeader.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btn_GetWeather
             // 
             this.btn_GetWeather.Enabled = false;
-            this.btn_GetWeather.Location = new System.Drawing.Point(478, 249);
+            this.btn_GetWeather.Location = new System.Drawing.Point(242, 259);
             this.btn_GetWeather.Name = "btn_GetWeather";
             this.btn_GetWeather.Size = new System.Drawing.Size(91, 23);
             this.btn_GetWeather.TabIndex = 2;
@@ -653,11 +656,186 @@
             this.context_Exit.Text = "Exit";
             this.context_Exit.Click += new System.EventHandler(this.context_Exit_Click);
             // 
+            // label1
+            // 
+            this.label1.Location = new System.Drawing.Point(16, 439);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(575, 13);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "Icons and API powered by Tomorrow.io";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // imageList
+            // 
+            this.imageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList.ImageStream")));
+            this.imageList.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList.Images.SetKeyName(0, "10000_clear_large@2x.png");
+            this.imageList.Images.SetKeyName(1, "10001_clear_large@2x.png");
+            this.imageList.Images.SetKeyName(2, "10010_cloudy_large@2x.png");
+            this.imageList.Images.SetKeyName(3, "11000_mostly_clear_large@2x.png");
+            this.imageList.Images.SetKeyName(4, "11001_mostly_clear_large@2x.png");
+            this.imageList.Images.SetKeyName(5, "11010_partly_cloudy_large@2x.png");
+            this.imageList.Images.SetKeyName(6, "11011_partly_cloudy_large@2x.png");
+            this.imageList.Images.SetKeyName(7, "11020_mostly_cloudy_large@2x.png");
+            this.imageList.Images.SetKeyName(8, "11021_mostly_cloudy_large@2x.png");
+            this.imageList.Images.SetKeyName(9, "11030_mostly_clear_large@2x.png");
+            this.imageList.Images.SetKeyName(10, "11031_mostly_clear_large@2x.png");
+            this.imageList.Images.SetKeyName(11, "20000_fog_large@2x.png");
+            this.imageList.Images.SetKeyName(12, "21000_fog_light_large@2x.png");
+            this.imageList.Images.SetKeyName(13, "21010_fog_light_mostly_clear_large@2x.png");
+            this.imageList.Images.SetKeyName(14, "21011_fog_light_mostly_clear_large@2x.png");
+            this.imageList.Images.SetKeyName(15, "21020_fog_light_partly_cloudy_large@2x.png");
+            this.imageList.Images.SetKeyName(16, "21021_fog_light_partly_cloudy_large@2x.png");
+            this.imageList.Images.SetKeyName(17, "21030_fog_light_mostly_cloudy_large@2x.png");
+            this.imageList.Images.SetKeyName(18, "21031_fog_light_mostly_cloudy_large@2x.png");
+            this.imageList.Images.SetKeyName(19, "21060_fog_mostly_clear_large@2x.png");
+            this.imageList.Images.SetKeyName(20, "21061_fog_mostly_clear_large@2x.png");
+            this.imageList.Images.SetKeyName(21, "21070_fog_partly_cloudy_large@2x.png");
+            this.imageList.Images.SetKeyName(22, "21071_fog_partly_cloudy_large@2x.png");
+            this.imageList.Images.SetKeyName(23, "21080_fog_mostly_cloudy_large@2x.png");
+            this.imageList.Images.SetKeyName(24, "21081_fog_mostly_cloudy_large@2x.png");
+            this.imageList.Images.SetKeyName(25, "40000_drizzle_large@2x.png");
+            this.imageList.Images.SetKeyName(26, "40010_rain_large@2x.png");
+            this.imageList.Images.SetKeyName(27, "42000_rain_light_large@2x.png");
+            this.imageList.Images.SetKeyName(28, "42010_rain_heavy_large@2x.png");
+            this.imageList.Images.SetKeyName(29, "42020_rain_heavy_partly_cloudy_large@2x.png");
+            this.imageList.Images.SetKeyName(30, "42021_rain_heavy_partly_cloudy_large@2x.png");
+            this.imageList.Images.SetKeyName(31, "42030_drizzle_mostly_clear_large@2x.png");
+            this.imageList.Images.SetKeyName(32, "42031_drizzle_mostly_clear_large@2x.png");
+            this.imageList.Images.SetKeyName(33, "42040_drizzle_partly_cloudy_large@2x.png");
+            this.imageList.Images.SetKeyName(34, "42041_drizzle_partly_cloudy_large@2x.png");
+            this.imageList.Images.SetKeyName(35, "42050_drizzle_mostly_cloudy_large@2x.png");
+            this.imageList.Images.SetKeyName(36, "42051_drizzle_mostly_cloudy_large@2x.png");
+            this.imageList.Images.SetKeyName(37, "42080_rain_partly_cloudy_large@2x.png");
+            this.imageList.Images.SetKeyName(38, "42081_rain_partly_cloudy_large@2x.png");
+            this.imageList.Images.SetKeyName(39, "42090_rain_mostly_clear_large@2x.png");
+            this.imageList.Images.SetKeyName(40, "42091_rain_mostly_clear_large@2x.png");
+            this.imageList.Images.SetKeyName(41, "42100_rain_mostly_cloudy_large@2x.png");
+            this.imageList.Images.SetKeyName(42, "42101_rain_mostly_cloudy_large@2x.png");
+            this.imageList.Images.SetKeyName(43, "42110_rain_heavy_mostly_clear_large@2x.png");
+            this.imageList.Images.SetKeyName(44, "42111_rain_heavy_mostly_clear_large@2x.png");
+            this.imageList.Images.SetKeyName(45, "42120_rain_heavy_mostly_cloudy_large@2x.png");
+            this.imageList.Images.SetKeyName(46, "42121_rain_heavy_mostly_cloudy_large@2x.png");
+            this.imageList.Images.SetKeyName(47, "42130_rain_light_mostly_clear_large@2x.png");
+            this.imageList.Images.SetKeyName(48, "42131_rain_light_mostly_clear_large@2x.png");
+            this.imageList.Images.SetKeyName(49, "42140_rain_light_partly_cloudy_large@2x.png");
+            this.imageList.Images.SetKeyName(50, "42141_rain_light_partly_cloudy_large@2x.png");
+            this.imageList.Images.SetKeyName(51, "42150_rain_light_mostly_cloudy_large@2x.png");
+            this.imageList.Images.SetKeyName(52, "42151_rain_light_mostly_cloudy_large@2x.png");
+            this.imageList.Images.SetKeyName(53, "50000_snow_large@2x.png");
+            this.imageList.Images.SetKeyName(54, "50010_flurries_large@2x.png");
+            this.imageList.Images.SetKeyName(55, "51000_snow_light_large@2x.png");
+            this.imageList.Images.SetKeyName(56, "51010_snow_heavy_large@2x.png");
+            this.imageList.Images.SetKeyName(57, "51020_snow_light_mostly_clear_large@2x.png");
+            this.imageList.Images.SetKeyName(58, "51021_snow_light_mostly_clear_large@2x.png");
+            this.imageList.Images.SetKeyName(59, "51030_snow_light_partly_cloudy_large@2x.png");
+            this.imageList.Images.SetKeyName(60, "51031_snow_light_partly_cloudy_large@2x.png");
+            this.imageList.Images.SetKeyName(61, "51040_snow_light_mostly_cloudy_large@2x.png");
+            this.imageList.Images.SetKeyName(62, "51041_snow_light_mostly_cloudy_large@2x.png");
+            this.imageList.Images.SetKeyName(63, "51050_snow_mostly_clear_large@2x.png");
+            this.imageList.Images.SetKeyName(64, "51051_snow_mostly_clear_large@2x.png");
+            this.imageList.Images.SetKeyName(65, "51060_snow_partly_cloudy_large@2x.png");
+            this.imageList.Images.SetKeyName(66, "51061_snow_partly_cloudy_large@2x.png");
+            this.imageList.Images.SetKeyName(67, "51070_snow_mostly_cloudy_large@2x.png");
+            this.imageList.Images.SetKeyName(68, "51071_snow_mostly_cloudy_large@2x.png");
+            this.imageList.Images.SetKeyName(69, "51080_wintry_mix_large@2x.png");
+            this.imageList.Images.SetKeyName(70, "51100_wintry_mix_large@2x.png");
+            this.imageList.Images.SetKeyName(71, "51120_wintry_mix_large@2x.png");
+            this.imageList.Images.SetKeyName(72, "51140_wintry_mix_large@2x.png");
+            this.imageList.Images.SetKeyName(73, "51150_flurries_mostly_clear_large@2x.png");
+            this.imageList.Images.SetKeyName(74, "51151_flurries_mostly_clear_large@2x.png");
+            this.imageList.Images.SetKeyName(75, "51160_flurries_partly_cloudy_large@2x.png");
+            this.imageList.Images.SetKeyName(76, "51161_flurries_partly_cloudy_large@2x.png");
+            this.imageList.Images.SetKeyName(77, "51170_flurries_mostly_cloudy_large@2x.png");
+            this.imageList.Images.SetKeyName(78, "51171_flurries_mostly_cloudy_large@2x.png");
+            this.imageList.Images.SetKeyName(79, "51190_snow_heavy_mostly_clear_large@2x.png");
+            this.imageList.Images.SetKeyName(80, "51191_snow_heavy_mostly_clear_large@2x.png");
+            this.imageList.Images.SetKeyName(81, "51200_snow_heavy_partly_cloudy_large@2x.png");
+            this.imageList.Images.SetKeyName(82, "51201_snow_heavy_partly_cloudy_large@2x.png");
+            this.imageList.Images.SetKeyName(83, "51210_snow_heavy_mostly_cloudy_large@2x.png");
+            this.imageList.Images.SetKeyName(84, "51211_snow_heavy_mostly_cloudy_large@2x.png");
+            this.imageList.Images.SetKeyName(85, "51220_wintry_mix_large@2x.png");
+            this.imageList.Images.SetKeyName(86, "60000_freezing_rain_drizzle_large@2x.png");
+            this.imageList.Images.SetKeyName(87, "60010_freezing_rain_large@2x.png");
+            this.imageList.Images.SetKeyName(88, "60020_freezing_rain_drizzle_partly_cloudy_large@2x.png");
+            this.imageList.Images.SetKeyName(89, "60021_freezing_rain_drizzle_partly_cloudy_large@2x.png");
+            this.imageList.Images.SetKeyName(90, "60030_freezing_rain_drizzle_mostly_clear_large@2x.png");
+            this.imageList.Images.SetKeyName(91, "60031_freezing_rain_drizzle_mostly_clear_large@2x.png");
+            this.imageList.Images.SetKeyName(92, "60040_freezing_rain_drizzle_mostly_cloudy_large@2x.png");
+            this.imageList.Images.SetKeyName(93, "60041_freezing_rain_drizzle_mostly_cloudy_large@2x.png");
+            this.imageList.Images.SetKeyName(94, "62000_freezing_rain_light_large@2x.png");
+            this.imageList.Images.SetKeyName(95, "62010_freezing_rain_heavy_large@2x.png");
+            this.imageList.Images.SetKeyName(96, "62020_freezing_rain_heavy_partly_cloudy_large@2x.png");
+            this.imageList.Images.SetKeyName(97, "62021_freezing_rain_heavy_partly_cloudy_large@2x.png");
+            this.imageList.Images.SetKeyName(98, "62030_freezing_rain_light_partly_cloudy_large@2x.png");
+            this.imageList.Images.SetKeyName(99, "62031_freezing_rain_light_partly_cloudy_large@2x.png");
+            this.imageList.Images.SetKeyName(100, "62040_wintry_mix_large@2x.png");
+            this.imageList.Images.SetKeyName(101, "62050_freezing_rain_light_mostly_clear_large@2x.png");
+            this.imageList.Images.SetKeyName(102, "62051_freezing_rain_light_mostly_clear_large@2x.png");
+            this.imageList.Images.SetKeyName(103, "62060_wintry_mix_large@2x.png");
+            this.imageList.Images.SetKeyName(104, "62070_freezing_rain_heavy_mostly_clear_large@2x.png");
+            this.imageList.Images.SetKeyName(105, "62071_freezing_rain_heavy_mostly_clear_large@2x.png");
+            this.imageList.Images.SetKeyName(106, "62080_freezing_rain_heavy_mostly_cloudy_large@2x.png");
+            this.imageList.Images.SetKeyName(107, "62081_freezing_rain_heavy_mostly_cloudy_large@2x.png");
+            this.imageList.Images.SetKeyName(108, "62090_freezing_rain_light_mostly_cloudy_large@2x.png");
+            this.imageList.Images.SetKeyName(109, "62091_freezing_rain_light_mostly_cloudy_large@2x.png");
+            this.imageList.Images.SetKeyName(110, "62120_wintry_mix_large@2x.png");
+            this.imageList.Images.SetKeyName(111, "62130_freezing_rain_mostly_clear_large@2x.png");
+            this.imageList.Images.SetKeyName(112, "62131_freezing_rain_mostly_clear_large@2x.png");
+            this.imageList.Images.SetKeyName(113, "62140_freezing_rain_partly_cloudy_large@2x.png");
+            this.imageList.Images.SetKeyName(114, "62141_freezing_rain_partly_cloudy_large@2x.png");
+            this.imageList.Images.SetKeyName(115, "62150_freezing_rain_mostly_cloudy_large@2x.png");
+            this.imageList.Images.SetKeyName(116, "62151_freezing_rain_mostly_cloudy_large@2x.png");
+            this.imageList.Images.SetKeyName(117, "62200_wintry_mix_large@2x.png");
+            this.imageList.Images.SetKeyName(118, "62220_wintry_mix_large@2x.png");
+            this.imageList.Images.SetKeyName(119, "70000_ice_pellets_large@2x.png");
+            this.imageList.Images.SetKeyName(120, "71010_ice_pellets_heavy_large@2x.png");
+            this.imageList.Images.SetKeyName(121, "71020_ice_pellets_light_large@2x.png");
+            this.imageList.Images.SetKeyName(122, "71030_wintry_mix_large@2x.png");
+            this.imageList.Images.SetKeyName(123, "71050_wintry_mix_large@2x.png");
+            this.imageList.Images.SetKeyName(124, "71060_wintry_mix_large@2x.png");
+            this.imageList.Images.SetKeyName(125, "71070_ice_pellets_partly_cloudy_large@2x.png");
+            this.imageList.Images.SetKeyName(126, "71071_ice_pellets_partly_cloudy_large@2x.png");
+            this.imageList.Images.SetKeyName(127, "71080_ice_pellets_mostly_clear_large@2x.png");
+            this.imageList.Images.SetKeyName(128, "71081_ice_pellets_mostly_clear_large@2x.png");
+            this.imageList.Images.SetKeyName(129, "71090_ice_pellets_mostly_cloudy_large@2x.png");
+            this.imageList.Images.SetKeyName(130, "71091_ice_pellets_mostly_cloudy_large@2x.png");
+            this.imageList.Images.SetKeyName(131, "71100_ice_pellets_light_mostly_clear_large@2x.png");
+            this.imageList.Images.SetKeyName(132, "71101_ice_pellets_light_mostly_clear_large@2x.png");
+            this.imageList.Images.SetKeyName(133, "71110_ice_pellets_light_partly_cloudy_large@2x.png");
+            this.imageList.Images.SetKeyName(134, "71111_ice_pellets_light_partly_cloudy_large@2x.png");
+            this.imageList.Images.SetKeyName(135, "71120_ice_pellets_light_mostly_cloudy_large@2x.png");
+            this.imageList.Images.SetKeyName(136, "71121_ice_pellets_light_mostly_cloudy_large@2x.png");
+            this.imageList.Images.SetKeyName(137, "71130_ice_pellets_heavy_mostly_clear_large@2x.png");
+            this.imageList.Images.SetKeyName(138, "71131_ice_pellets_heavy_mostly_clear_large@2x.png");
+            this.imageList.Images.SetKeyName(139, "71140_ice_pellets_heavy_partly_cloudy_large@2x.png");
+            this.imageList.Images.SetKeyName(140, "71141_ice_pellets_heavy_partly_cloudy_large@2x.png");
+            this.imageList.Images.SetKeyName(141, "71150_wintry_mix_large@2x.png");
+            this.imageList.Images.SetKeyName(142, "71160_ice_pellets_heavy_mostly_cloudy_large@2x.png");
+            this.imageList.Images.SetKeyName(143, "71161_ice_pellets_heavy_mostly_cloudy_large@2x.png");
+            this.imageList.Images.SetKeyName(144, "71170_wintry_mix_large@2x.png");
+            this.imageList.Images.SetKeyName(145, "80000_tstorm_large@2x.png");
+            this.imageList.Images.SetKeyName(146, "80010_tstorm_mostly_clear_large@2x.png");
+            this.imageList.Images.SetKeyName(147, "80011_tstorm_mostly_clear_large@2x.png");
+            this.imageList.Images.SetKeyName(148, "80020_tstorm_mostly_cloudy_large@2x.png");
+            this.imageList.Images.SetKeyName(149, "80021_tstorm_mostly_cloudy_large@2x.png");
+            this.imageList.Images.SetKeyName(150, "80030_tstorm_partly_cloudy_large@2x.png");
+            this.imageList.Images.SetKeyName(151, "80031_tstorm_partly_cloudy_large@2x.png");
+            // 
+            // picBox_Weather
+            // 
+            this.picBox_Weather.Location = new System.Drawing.Point(215, 59);
+            this.picBox_Weather.Name = "picBox_Weather";
+            this.picBox_Weather.Size = new System.Drawing.Size(144, 144);
+            this.picBox_Weather.TabIndex = 5;
+            this.picBox_Weather.TabStop = false;
+            // 
             // WeBe
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(607, 453);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.tabControl_Principal);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "WeBe";
@@ -666,7 +844,6 @@
             this.Deactivate += new System.EventHandler(this.WeBe_Deactivate);
             this.tabControl_Principal.ResumeLayout(false);
             this.Home.ResumeLayout(false);
-            this.Home.PerformLayout();
             this.Options.ResumeLayout(false);
             this.tabControl_Configuration.ResumeLayout(false);
             this.Profiles.ResumeLayout(false);
@@ -674,6 +851,7 @@
             this.Settings.ResumeLayout(false);
             this.Settings.PerformLayout();
             this.notify_ContextMenu.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.picBox_Weather)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -731,6 +909,9 @@
         public System.Windows.Forms.CheckBox chkBox_StartWithWindows;
         public System.Windows.Forms.CheckBox chkBox_AutoStart;
         public System.Windows.Forms.ToolStripMenuItem context_Exit;
+        public System.Windows.Forms.ImageList imageList;
+        public System.Windows.Forms.PictureBox picBox_Weather;
+        public System.Windows.Forms.Label label1;
     }
 }
 

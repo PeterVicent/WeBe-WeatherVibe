@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Drawing;
 using System.Globalization;
 using System.Linq;
 using System.Threading;
@@ -156,14 +158,6 @@ namespace WeBe___WeatherVibe
                 WeBe.cbx_Country.Items.Clear();
                 foreach (var country in Country.DataBase)
                     WeBe.cbx_Country.Items.Add(country.Name);
-
-                WeBe.cbx_State.Items.Clear();
-                WeBe.cbx_State.Text = string.Empty;
-                WeBe.cbx_State.SelectedItem = string.Empty;
-                WeBe.cbx_City.Items.Clear();
-                WeBe.cbx_City.Text = string.Empty;
-                WeBe.cbx_City.SelectedItem = string.Empty;
-                WeBe.cbx_City.Enabled = false;
             }
         }
 
@@ -209,7 +203,6 @@ namespace WeBe___WeatherVibe
             if (WeBe.cbx_State.Items.Count <= 1)
             {
                 WeBe.cbx_State.Items.Clear();
-                WeBe.cbx_State.Text = string.Empty;
                 foreach (var state in Country.GetStatesByCountry(countryName))
                 {
                     if (state.Name == null)
@@ -247,75 +240,74 @@ namespace WeBe___WeatherVibe
             }
         }
 
-        internal static void CreateThreadAndStart()
+        private static void ThreadLogic()
         {
-            Thread =
-            new Thread(async =>
+            string location;
+            if (SaveSystem.SaveData.City.Length > 0)
+                location = SaveSystem.SaveData.City;
+            else if (SaveSystem.SaveData.State.Length > 0)
+                location = SaveSystem.SaveData.State;
+            else if (SaveSystem.SaveData.Country.Length > 0)
+                location = SaveSystem.SaveData.Country;
+            else
+                return;
+
+            Weather weather = null;
+            Profile profile = null;
+            var actualProfileName = string.Empty;
+            while (true)
             {
-                var location = string.Empty;
-                if (SaveSystem.SaveData.City.Length > 0)
-                    location = SaveSystem.SaveData.City;
-                else if (SaveSystem.SaveData.State.Length > 0)
-                    location = SaveSystem.SaveData.State;
-                else if (SaveSystem.SaveData.Country.Length > 0)
-                    location = SaveSystem.SaveData.Country;
-                else
-                    return;
-
-                Weather weather = null;
-                Profile profile = null;
-                var actualProfileName = string.Empty;
-                while (true)
+                try
                 {
-                    try
+                    var hourNow = DateTime.Now.TimeOfDay;
+                    var isNight = hourNow > TimeSpan.Parse(SaveSystem.SaveData.FirstHourNight)
+                               && hourNow < TimeSpan.Parse(SaveSystem.SaveData.SecondHourNight);
+
+                    var actualWeather = Weather.GetWeatherByLocation(location);
+                    if (weather == null || !weather.Equals(actualWeather))
                     {
-                        var hourNow = DateTime.Now.TimeOfDay;
-                        var isNight = hourNow > TimeSpan.Parse(SaveSystem.SaveData.FirstHourNight) 
-                                   && hourNow < TimeSpan.Parse(SaveSystem.SaveData.SecondHourNight);
-
-                        var actualWeather = Weather.GetWeatherByLocation(location);
-                        if (weather == null || !weather.Equals(actualWeather))
+                        weather = actualWeather;
+                        if (weather?.Data?.Values?.WeatherCode > 0)
                         {
-                            weather = actualWeather;
-                            if (weather?.Data?.Values?.WeatherCode > 0)
-                            {
-                                var weatherCode = weather?.Data?.Values?.WeatherCode.ToString();
-                                if (SaveSystem.SaveData.SimplifiedMode)
-                                    Weather.WeatherCodes.DetailedToSimplified.TryGetValue(weatherCode, out weatherCode);
+                            var weatherCode = weather.Data.Values.WeatherCode.ToString();
+                            SetWeatherInHome(weatherCode);
 
-                                profile = new Profile(weatherCode);
-                            }
+                            if (SaveSystem.SaveData.SimplifiedMode)
+                                Weather.WeatherCodes.DetailedToSimplified.TryGetValue(weatherCode, out weatherCode);
+
+                            profile = new Profile(weatherCode);
                         }
+                    }
 
-                        if (profile == null || weather == null)
-                            profile = new Profile(DefaultWeatherCode);
+                    if (profile == null || weather == null)
+                        profile = new Profile(DefaultWeatherCode);
 
-                        if ((!isNight && profile.ProfilesDay.Count > 0)  
-                        || (isNight && profile.ProfilesNight.Count > 0))
+                    if ((!isNight && profile.ProfilesDay.Count > 0)
+                    || (isNight && profile.ProfilesNight.Count > 0))
+                    {
+                        var random = new Random();
+                        var profileName = isNight
+                            ? profile.ProfilesNight[random.Next(profile.ProfilesNight.Count - 1)]
+                            : profile.ProfilesDay[random.Next(profile.ProfilesDay.Count - 1)];
+                        if (!profileName.Equals(actualProfileName))
                         {
-                            var random = new Random();
-                            var profileName = isNight 
-                                ? profile.ProfilesNight[random.Next(profile.ProfilesNight.Count - 1)]
-                                : profile.ProfilesDay[random.Next(profile.ProfilesDay.Count - 1)];
-                            if (!profileName.Equals(actualProfileName))
-                            {
-                                actualProfileName = profileName;
-                                WallpaperEngine.StartAndSetProfile(profileName);
-                            }
+                            actualProfileName = profileName;
+                            WallpaperEngine.StartAndSetProfile(profileName);
                         }
-
-                        Thread.Sleep(SaveSystem.SaveData.Interval);
-                    } catch { }
-                }
-            })
-            { IsBackground = true };
-
-            Thread.Start();
+                    }
+                } catch { }
+                
+                Thread.Sleep(SaveSystem.SaveData.Interval);
+            }
         }
+
+        internal static Thread GetThread()
+            => new Thread(async => { ThreadLogic(); }) { IsBackground = true };
 
         internal static void StartThread()
         {
-            CreateThreadAndStart();
+            Thread = GetThread();
+            Thread.Start();
 
             ConfigureStartAndStopButtons(started: true);
         }
@@ -338,6 +330,27 @@ namespace WeBe___WeatherVibe
             WeBe.context_Start.Visible = !started;
             WeBe.context_Stop.Enabled = started;
             WeBe.context_Stop.Visible = started;
+        }
+
+        internal static void SetWeatherInHome(string weatherCode)
+        {
+            var actualWeather = Weather.WeatherCodes.WeatherCodeFullDay.FirstOrDefault(w => w.Key == weatherCode);
+
+            Image image = null;
+            for (int i = 0; i < WeBe.imageList.Images.Count; i++)
+            {
+                if (WeBe.imageList.Images.Keys[i].Contains(actualWeather.Key))
+                {
+                    image = WeBe.imageList.Images[i];
+                    break;
+                }
+            }
+
+            if (image == null)
+                return;
+
+            WeBe.label_ActualWeather.Text = actualWeather.Value;
+            WeBe.picBox_Weather.Image = image;
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Microsoft.Win32;
 using System;
+using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using WeBe___WeatherVibe.Classes;
@@ -27,7 +28,7 @@ namespace WeBe___WeatherVibe
 
         private void cbx_Country_DropDownClosed(object sender, EventArgs e)
         {
-            if (cbx_Country.SelectedItem == null)
+            if (cbx_Country.SelectedItem == null || cbx_Country.Text.Equals(SaveSystem.SaveData.Country))
                 return;
 
             Program.LoadComboBoxStateBySelectedCountry(cbx_Country.SelectedItem.ToString());
@@ -46,7 +47,7 @@ namespace WeBe___WeatherVibe
 
         private void cbx_State_DropDownClosed(object sender, EventArgs e)
         {
-            if (cbx_Country.SelectedItem == null || cbx_State.SelectedItem == null)
+            if (cbx_Country.SelectedItem == null || cbx_State.SelectedItem == null || cbx_State.Text.Equals(SaveSystem.SaveData.State))
                 return;
 
             Program.LoadComboBoxCityBySelectedState(cbx_Country.SelectedItem.ToString(), cbx_State.SelectedItem.ToString());
@@ -75,9 +76,9 @@ namespace WeBe___WeatherVibe
 
             SaveSystem.SaveData = new SaveData()
             {
-                Country = cbx_Country.SelectedItem.ToString(),
-                State = cbx_State.SelectedItem.ToString(),
-                City = cbx_City.SelectedItem.ToString(),
+                Country = cbx_Country.Text,
+                State = cbx_State.Text,
+                City = cbx_City.Text,
                 Language = Language.SupportedLanguages.FirstOrDefault(language => language.Key == cbx_Language.SelectedItem.ToString()),
                 Interval = Convert.ToInt32(txtBx_Interval.Text) * 60000,
                 WallpaperEngineExecutablePath = txtBx_WallpaperEngineExecutable.Text,
@@ -171,9 +172,19 @@ namespace WeBe___WeatherVibe
 
         private void btn_GetWeather_Click(object sender, EventArgs e)
         {
-            var actualWeather = Weather.GetWeatherByLocation(SaveSystem.SaveData.City);
+            string location;
+            if (SaveSystem.SaveData.City.Length > 0)
+                location = SaveSystem.SaveData.City;
+            else if (SaveSystem.SaveData.State.Length > 0)
+                location = SaveSystem.SaveData.State;
+            else if (SaveSystem.SaveData.Country.Length > 0)
+                location = SaveSystem.SaveData.Country;
+            else
+                return;
+
+            var actualWeather = Weather.GetWeatherByLocation(location);
             var weatherCode = Weather.WeatherCodes.WeatherCodeFullDay.FirstOrDefault(w => w.Key.Equals(actualWeather.Data.Values.WeatherCode.ToString()));
-            label_ActualWeather.Text = weatherCode.Value.ToString();
+            Program.SetWeatherInHome(weatherCode.Key);
         }
 
         private void Notify_MouseClick(object sender, MouseEventArgs e)
