@@ -1,4 +1,4 @@
-# WeBe-WeatherVibe
+# WeBe - WeatherVibe
 
 **WeBe** é uma ferramente que integra com o **Wallpaper Engine** e troca entre perfis criados dentro do mesmo de acordo com o clima atual de sua região, deixando seu setup exatamente com a vibe do clima do momento.
 
