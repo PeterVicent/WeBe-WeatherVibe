@@ -7,3 +7,5 @@ O projeto é totalmente open-source e pensado em performance, sendo extremamente
 Curtiu a ideia? Então segue os links de apoio:
 
 Primeiramente, [como funciona](https://github.com/PeterVicent/WeBe-WeatherVibe/blob/master/HowWorks.md) e por fim, [como configurar](https://github.com/PeterVicent/WeBe-WeatherVibe/blob/master/HowSetup.md).
+
+Para mais informações sobre os tipos de [climas complexos e simplificados](https://github.com/PeterVicent/WeBe-WeatherVibe/blob/master/Weathers.md)
