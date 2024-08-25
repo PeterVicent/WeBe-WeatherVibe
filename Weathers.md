@@ -1,3 +1,12 @@
+No **WeBe** temos 2 opções de climas para configurar, **Climas Complexos** e os **Climas Simplificados** que abrangem bastantes climas complexos em 1 clima simplificado, para facilitar a configuração do seus perfis:
+> **Climas Complexos**
+> 
+> ![image](https://github.com/user-attachments/assets/4ed75c4e-5ef7-40fa-a616-961883b6d179)
+>
+> **Climas Simplificados**
+> 
+> ![image](https://github.com/user-attachments/assets/9be43f6b-f0e5-4f42-a062-b17ed3a74f61)
+
 # Climas Simplificados
 
 Climas simplificados com seus respectivos códigos e descrições detalhadas:
