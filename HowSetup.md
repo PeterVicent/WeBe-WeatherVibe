@@ -1,6 +1,6 @@
 # Como configurar
 
-O WeBe usa o [Tomorrow.io](https://Tomorrow.io) para obter o clima, portanto, será preciso criar uma conta no site deles para obter um **Api Token** que será usado pelo **WeBe**, como fazer isso? É bem simples:
+O **WeBe** usa o [Tomorrow.io](https://Tomorrow.io) para obter o clima, portanto, será preciso criar uma conta no site deles para obter um **Api Token** que será usado pelo **WeBe**, como fazer isso? É bem simples:
 
 
 Primeiro, vá para o site deles e se [cadastre](https://app.tomorrow.io/signup).
