@@ -3,6 +3,7 @@ using System.IO;
 using System.Drawing;
 using System.Net.Http;
 using System.Windows.Forms;
+using System.Collections.Generic;
 using Newtonsoft.Json;
 
 namespace WeBe___WeatherVibe.Classes
@@ -37,6 +38,26 @@ namespace WeBe___WeatherVibe.Classes
 
             var retorno = response.Content.ReadAsStringAsync().Result;
             return JsonConvert.DeserializeObject<Weather>(retorno);
+        }
+
+        internal static bool IsNight()
+        {
+            var hourNow = DateTime.Now.TimeOfDay;
+            return hourNow > TimeSpan.Parse(SaveSystem.SaveData.FirstHourNight) || hourNow < TimeSpan.Parse(SaveSystem.SaveData.SecondHourNight);
+        }
+
+        internal static Image GetActualWeatherImage(bool isNight, KeyValuePair<string, string> weatherCode)
+        {
+            if (isNight)
+                for (int i = 0; i < Program.WeBe.imageList.Images.Count; i++)
+                    if (Program.WeBe.imageList.Images.Keys[i].Contains($"{weatherCode.Key}1"))
+                        return Program.WeBe.imageList.Images[i];
+
+            for (int i = 0; i < Program.WeBe.imageList.Images.Count; i++)
+                if (Program.WeBe.imageList.Images.Keys[i].Contains($"{weatherCode.Key}0"))
+                    return Program.WeBe.imageList.Images[i];
+
+            return null;
         }
     }
 

@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Globalization;
 using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
@@ -262,10 +259,7 @@ namespace WeBe___WeatherVibe
             {
                 try
                 {
-                    var hourNow = DateTime.Now.TimeOfDay;
-                    var isNight = hourNow > TimeSpan.Parse(SaveSystem.SaveData.FirstHourNight)
-                               && hourNow < TimeSpan.Parse(SaveSystem.SaveData.SecondHourNight);
-
+                    var isNight = Weather.IsNight();
                     var actualWeather = Weather.GetWeatherByLocation(location);
                     if (weather == null || !weather.Equals(actualWeather))
                     {
@@ -338,26 +332,14 @@ namespace WeBe___WeatherVibe
         internal static void SetWeatherInHome(Weather weather)
         {
             var weatherCode = Weather.WeatherCodes.WeatherCodeFullDay.FirstOrDefault(w => w.Key == weather.Data.Values.WeatherCode.ToString());
-
-            Image image = null;
-            for (int i = 0; i < WeBe.imageList.Images.Count; i++)
-            {
-                if (WeBe.imageList.Images.Keys[i].Contains(weatherCode.Key))
-                {
-                    image = WeBe.imageList.Images[i];
-                    break;
-                }
-            }
-
-            if (image == null)
-                return;
+            var isNight = Weather.IsNight();
 
             WeBe.label_ActualWeather.Text = weatherCode.Value;
             WeBe.label_RainIntensity.Text = $"{Language.DataBase.RainIntensity}: {weather.Data.Values.RainIntensity}";
             WeBe.label_SnowIntensity.Text = $"{Language.DataBase.SnowIntensity}: {weather.Data.Values.SnowIntensity}";
             WeBe.label_Temperature.Text = $"{Language.DataBase.Temperature}: {weather.Data.Values.Temperature}";
             WeBe.label_LocationWeather.Text = $"{weather.Location.Name}";
-            WeBe.picBox_Weather.Image = image;
+            WeBe.picBox_Weather.Image = Weather.GetActualWeatherImage(isNight, weatherCode);
         }
     }
 }
