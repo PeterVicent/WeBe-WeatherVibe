@@ -19,4 +19,4 @@ No Wallpaper Engine tenho os seguintes perfis:
 
 ![image](https://github.com/user-attachments/assets/3ad72f10-3c2a-4ad3-9308-8c37ce2e84cc)
 
-Agora sempre que for nublado o WeBe troca automaticamente entre esses perfis dependendo do clima e horário, bem legal né? O setup sempre está com a vibe do clima!
+Agora sempre que for nublado o WeBe troca automaticamente entre esses perfis dependendo do clima e horário, bem legal né? O setup sempre está com a vibe do clima! Que tal olhar agora [como funciona](https://github.com/PeterVicent/WeBe-WeatherVibe/blob/master/HowSetup.md)?
