@@ -116,25 +116,25 @@ namespace WeBe___WeatherVibe
             WeBe.cbx_Language.Items.Clear();
             WeBe.cbx_Weathers.Items.Clear();
 
+            WeBe.label_Country.Text = Language.DataBase.Country;
             if (!SaveSystem.SaveData.Country.Equals(string.Empty))
             {
-                WeBe.label_Country.Text = Language.DataBase.Country;
                 WeBe.cbx_Country.Items.Add(SaveSystem.SaveData.Country);
                 WeBe.cbx_Country.Text += SaveSystem.SaveData.Country;
             }
 
+            WeBe.label_State.Text = Language.DataBase.State;
             if (!SaveSystem.SaveData.State.Equals(string.Empty))
             {
-                WeBe.label_State.Text = Language.DataBase.State;
                 WeBe.cbx_State.Items.Add(SaveSystem.SaveData.State);
                 WeBe.cbx_State.Text += SaveSystem.SaveData.State;
             }
             else
                 WeBe.cbx_State.Enabled = false;
 
+            WeBe.label_City.Text = Language.DataBase.City;
             if (!SaveSystem.SaveData.City.Equals(string.Empty))
             {
-                WeBe.label_City.Text = Language.DataBase.City;
                 WeBe.cbx_City.Items.Add(SaveSystem.SaveData.City);
                 WeBe.cbx_City.Text += SaveSystem.SaveData.City;
             }
