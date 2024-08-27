@@ -7,7 +7,6 @@
   "Language": "Language",
   "FindExecutable": "Find Executable",
   "Home": "Home",
-  "Options": "Options",
   "Settings": "Settings",
   "Profiles": "Profiles",
   "Start": "START",
@@ -33,5 +32,6 @@
   "RainIntensity": "Rain Intensity",
   "SnowIntensity": "Snow Intensity",
   "Temperature": "Temperature",
+  "DarkMode": "Dark Mode",
   "Powered": "Icons and API powered by"
 }

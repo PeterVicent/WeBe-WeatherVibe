@@ -1,13 +1,13 @@
 ﻿using Microsoft.Win32;
 using System;
-using System.Drawing;
+using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using WeBe___WeatherVibe.Classes;
 
 namespace WeBe___WeatherVibe
 {
-    public partial class WeBe : Form
+    public partial class WeBe : MetroFramework.Forms.MetroForm
     {
         private Profile Profile;
 
@@ -18,7 +18,7 @@ namespace WeBe___WeatherVibe
 
         internal void BringToFontTheWindows()
         {
-            ShowInTaskbar = true;
+            SetVisible(true);
             WindowState = FormWindowState.Normal;
             BringToFront();
         }
@@ -88,11 +88,13 @@ namespace WeBe___WeatherVibe
                 SimplifiedMode = chkBox_SimplifiedMode.Checked,
                 StartMinimized = chkBox_StartMinimized.Checked,
                 AutoStart = chkBox_AutoStart.Checked,
-                StartWithWindows = chkBox_StartWithWindows.Checked
+                StartWithWindows = chkBox_StartWithWindows.Checked,
+                DarkMode = toggle_DarkMode.Checked
             };
             SaveSystem.Save();
 
             Program.LoadVariables();
+            Program.SetVariables(saveCall: true);
         }
 
         private void CheckIfNeedToStartWithWindows()
@@ -192,32 +194,32 @@ namespace WeBe___WeatherVibe
 
             BringToFontTheWindows();
         }
-
-        private void WeBe_Deactivate(object sender, EventArgs e)
-        {
-            if (WindowState == FormWindowState.Minimized)
-                ShowInTaskbar = false;
-        }
-
-        private void context_Options_Click(object sender, EventArgs e)
+        
+        private void context_Profiles_Click(object sender, EventArgs e)
         {
             BringToFontTheWindows();
             tabControl_Principal.SelectedIndex = 1;
         }
 
-        private void context_Profiles_Click(object sender, EventArgs e)
-        {
-            context_Options_Click(sender, e);
-            tabControl_Configuration.SelectedIndex = 0;
-        }
-
         private void context_Settings_Click(object sender, EventArgs e)
         {
-            context_Options_Click(sender, e);
-            tabControl_Configuration.SelectedIndex = 1;
+            BringToFontTheWindows();
+            tabControl_Principal.SelectedIndex = 2;
         }
 
         private void context_Exit_Click(object sender, EventArgs e)
             => Application.Exit();
+
+        private void toggle_DarkMode_CheckedChanged(object sender, EventArgs e)
+            => Program.SetFormTheme(toggle_DarkMode.Checked);
+
+        private void WeBe_Resize(object sender, EventArgs e)
+        {
+            if (WindowState == FormWindowState.Minimized)
+                SetVisible(false);
+        }
+
+        public void SetVisible(bool visible)
+            => SetVisibleCore(visible);
     }
 }

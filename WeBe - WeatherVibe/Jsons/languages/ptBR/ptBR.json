@@ -7,7 +7,6 @@
   "Language": "Idioma",
   "FindExecutable": "Procurar Executável",
   "Home": "Inicio",
-  "Options": "Opções",
   "Settings": "Configurações",
   "Profiles": "Perfis",
   "Start": "INICIAR",
@@ -33,5 +32,6 @@
   "RainIntensity": "Intensidade da Chuva",
   "SnowIntensity": "Intensidade da Nave",
   "Temperature": "Temperatura",
+  "DarkMode": "Modo Escuro",
   "Powered": "Icones e API disponibilizados por"
 }

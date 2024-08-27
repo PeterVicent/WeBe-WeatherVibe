@@ -16,7 +16,6 @@ namespace WeBe___WeatherVibe.Classes
         public string LanguageText { get; set; }
         public string FindExecutable { get; set; }
         public string Home { get; set; }
-        public string Options { get; set; }
         public string Settings { get; set; }
         public string Profiles { get; set; }
         public string Start { get; set; }
@@ -42,6 +41,7 @@ namespace WeBe___WeatherVibe.Classes
         public string RainIntensity { get; set; }
         public string SnowIntensity { get; set; }
         public string Temperature { get; set; }
+        public string DarkMode { get; set; }
         public string Powered { get; set; }
 
         [JsonIgnore()]

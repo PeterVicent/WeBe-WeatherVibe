@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Linq;
+using System.Drawing;
 using System.Threading;
 using System.Windows.Forms;
+using System.Collections.Generic;
 using WeBe___WeatherVibe.Classes;
+using System.IO;
 
 namespace WeBe___WeatherVibe
 {
@@ -11,8 +14,8 @@ namespace WeBe___WeatherVibe
         public const string DefaultWeatherCode = "0";
 
         public static WeBe WeBe;
-        public static Notification Notification;
         public static Thread Thread;
+        public static List<string> Pictures;
         
         [STAThread]
         static void Main()
@@ -20,17 +23,12 @@ namespace WeBe___WeatherVibe
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            WeBe = new WeBe();
             LoadVariables();
-            if (SaveSystem.SaveData.StartMinimized)
-            {
-                WeBe.ShowInTaskbar = false;
-                WeBe.WindowState = FormWindowState.Minimized;
-                Notification.ShowSuccessfulNotification(Language.DataBase.Successful, Language.DataBase.StartedMinimized);
-            }
+            WeBe = new WeBe();
+            SetVariables();
 
-            if (SaveSystem.SaveData.AutoStart)
-                StartThread();
+            if (!SaveSystem.SaveData.StartMinimized)
+                WeBe.BringToFontTheWindows();
 
             Application.Run(WeBe);
         }
@@ -39,11 +37,67 @@ namespace WeBe___WeatherVibe
         {
             SaveSystem.CheckIfSaveExists();
             Language.InstantiateDataBase();
-            Notification = new Notification(WeBe);
+            Pictures = Directory.GetFiles($"{Application.StartupPath}\\icons", "*.png", SearchOption.AllDirectories).ToList();
 
             Weather.WeatherCodes = Weather.GetWeatherCodesByLanguage();
             WallpaperEngine.ExecutablePath = SaveSystem.SaveData.WallpaperEngineExecutablePath;
+        }
 
+        public static void SetVariables(bool saveCall = false)
+        {
+            SetSaveDataInTextBoxAndCheckBox();
+            SetLanguageInButtonsAndLabels();
+            LoadComboBoxsAndSetLanguage();
+
+            if (saveCall)
+                return;
+
+            SetFormTheme(SaveSystem.SaveData.DarkMode);
+            if (SaveSystem.SaveData.StartMinimized)
+            {
+                WeBe.SetVisible(false);
+                WeBe.WindowState = FormWindowState.Minimized;
+                ShowSuccessfulNotification(Language.DataBase.Successful, Language.DataBase.StartedMinimized);
+            }
+
+            if (SaveSystem.SaveData.AutoStart)
+                StartThread();
+        }
+
+        internal static void SetFormTheme(bool darkMode)
+        {
+            if (darkMode)
+            {
+                var darkGray = Color.FromArgb(34, 34, 34);
+                WeBe.StyleManager.Theme = MetroFramework.MetroThemeStyle.Dark;
+                WeBe.label_Powered.ForeColor = Color.Gray;
+                WeBe.listBox_Profiles.BackColor = Color.Black;
+                WeBe.listBox_Profiles.ForeColor = Color.Gray;
+                WeBe.tabPage_Settings.BackColor = darkGray;
+                WeBe.tabPage_Profiles.BackColor = darkGray;
+                WeBe.txtBox_FirstHourNight.BackColor = darkGray;
+                WeBe.txtBox_FirstHourNight.ForeColor = Color.Gray;
+                WeBe.txtBox_SecondHourNight.BackColor = darkGray;
+                WeBe.txtBox_SecondHourNight.ForeColor = Color.Gray;
+            }
+            else
+            {
+                var lightGray = Color.FromArgb(238, 238, 238);
+                WeBe.StyleManager.Theme = MetroFramework.MetroThemeStyle.Light;
+                WeBe.label_Powered.ForeColor = Color.Black;
+                WeBe.listBox_Profiles.BackColor = lightGray;
+                WeBe.listBox_Profiles.ForeColor = Color.Black;
+                WeBe.tabPage_Settings.BackColor = Control.DefaultBackColor;
+                WeBe.tabPage_Profiles.BackColor = Control.DefaultBackColor;
+                WeBe.txtBox_FirstHourNight.BackColor = lightGray;
+                WeBe.txtBox_FirstHourNight.ForeColor = Color.Black;
+                WeBe.txtBox_SecondHourNight.BackColor = lightGray;
+                WeBe.txtBox_SecondHourNight.ForeColor = Color.Black;
+            }
+        }
+
+        internal static void SetSaveDataInTextBoxAndCheckBox()
+        {
             WeBe.chkBox_SimplifiedMode.Checked = SaveSystem.SaveData.SimplifiedMode;
             WeBe.chkBox_StartMinimized.Checked = SaveSystem.SaveData.StartMinimized;
             WeBe.chkBox_AutoStart.Checked = SaveSystem.SaveData.AutoStart;
@@ -53,9 +107,7 @@ namespace WeBe___WeatherVibe
             WeBe.txtBx_Interval.Text = (SaveSystem.SaveData.Interval / 60000).ToString();
             WeBe.txtBox_FirstHourNight.Text = SaveSystem.SaveData.FirstHourNight;
             WeBe.txtBox_SecondHourNight.Text = SaveSystem.SaveData.SecondHourNight;
-
-            SetLanguageInButtonsAndLabels();
-            LoadComboBoxsAndSetLanguage();
+            WeBe.toggle_DarkMode.Checked = SaveSystem.SaveData.DarkMode;
         }
 
         internal static void SetLanguageInButtonsAndLabels()
@@ -74,12 +126,10 @@ namespace WeBe___WeatherVibe
             WeBe.btn_Stop.Text = Language.DataBase.Stop;
             WeBe.context_Stop.Text = Language.DataBase.Stop;
 
-            WeBe.tabControl_Principal.TabPages[0].Text = Language.DataBase.Home;
-            WeBe.tabControl_Principal.TabPages[1].Text = Language.DataBase.Options;
-            WeBe.context_Options.Text = Language.DataBase.Options;
-            WeBe.tabControl_Configuration.TabPages[0].Text = Language.DataBase.Profiles;
+            WeBe.tabPage_Home.Text = Language.DataBase.Home;
+            WeBe.tabPage_Profiles.Text = Language.DataBase.Profiles;
             WeBe.context_Profiles.Text = Language.DataBase.Profiles;
-            WeBe.tabControl_Configuration.TabPages[1].Text = Language.DataBase.Settings;
+            WeBe.tabPage_Settings.Text = Language.DataBase.Settings;
             WeBe.context_Settings.Text = Language.DataBase.Settings;
             WeBe.context_Exit.Text = Language.DataBase.Exit;
 
@@ -90,6 +140,7 @@ namespace WeBe___WeatherVibe
             WeBe.chkBox_StartMinimized.Text = Language.DataBase.StartMinimized;
             WeBe.chkBox_AutoStart.Text = Language.DataBase.AutoStart;
             WeBe.chkBox_StartWithWindows.Text = Language.DataBase.StartWithWindows;
+            WeBe.label_DarkMode.Text = Language.DataBase.DarkMode;
 
             WeBe.label_Weather.Text = Language.DataBase.Weather;
             WeBe.chkBox_SimplifiedMode.Text = Language.DataBase.SimplifiedMode;
@@ -240,6 +291,11 @@ namespace WeBe___WeatherVibe
             }
         }
 
+        internal static void ShowSuccessfulNotification(string title, string message)
+        {
+            WeBe.Notify.ShowBalloonTip(1000, title, message, ToolTipIcon.Info);
+        }
+
         private static void ThreadLogic()
         {
             string location;
@@ -331,6 +387,9 @@ namespace WeBe___WeatherVibe
 
         internal static void SetWeatherInHome(Weather weather)
         {
+            if (weather == null)
+                return;
+
             var weatherCode = Weather.WeatherCodes.WeatherCodeFullDay.FirstOrDefault(w => w.Key == weather.Data.Values.WeatherCode.ToString());
             var isNight = Weather.IsNight();
 
@@ -338,7 +397,7 @@ namespace WeBe___WeatherVibe
             WeBe.label_RainIntensity.Text = $"{Language.DataBase.RainIntensity}: {weather.Data.Values.RainIntensity}";
             WeBe.label_SnowIntensity.Text = $"{Language.DataBase.SnowIntensity}: {weather.Data.Values.SnowIntensity}";
             WeBe.label_Temperature.Text = $"{Language.DataBase.Temperature}: {weather.Data.Values.Temperature}";
-            WeBe.label_LocationWeather.Text = $"{weather.Location.Name}";
+            WeBe.label_LocationWeather.Text = $"{weather.Location.Name.Replace(',', '\n')}";
             WeBe.picBox_Weather.Image = Weather.GetActualWeatherImage(isNight, weatherCode);
         }
     }

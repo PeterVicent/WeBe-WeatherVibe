@@ -36,6 +36,16 @@
     <ApplicationIcon>sunny.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MetroFramework, Version=1.2.0.3, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MetroFramework.RunTime.1.2.0.3\lib\net40-Client\MetroFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="MetroFramework.Design, Version=1.2.0.3, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MetroFramework.Design.1.2.0.3\lib\net40\MetroFramework.Design.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="MetroFramework.Fonts, Version=1.2.0.3, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MetroFramework.Fonts.1.2.0.3\lib\net40\MetroFramework.Fonts.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -54,7 +64,6 @@
   <ItemGroup>
     <Compile Include="Classes\Country.cs" />
     <Compile Include="Classes\Language.cs" />
-    <Compile Include="Classes\Notification.cs" />
     <Compile Include="Classes\Profile.cs" />
     <Compile Include="Classes\SaveSystem.cs" />
     <Compile Include="Classes\WallpaperEngine.cs" />
@@ -107,6 +116,7 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Content Include="MetroFramework.txt" />
     <Content Include="Resources\WeathersIcons\10000_clear_large%402x.png" />
     <Content Include="Resources\WeathersIcons\10001_clear_large%402x.png" />
     <Content Include="Resources\WeathersIcons\10010_cloudy_large%402x.png" />

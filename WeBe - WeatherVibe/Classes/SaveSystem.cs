@@ -23,7 +23,8 @@ namespace WeBe___WeatherVibe.Classes
                 FirstHourNight = "18:30",
                 SecondHourNight = "06:00",
                 SimplifiedMode = true,
-                StartMinimized = false
+                StartMinimized = false,
+                DarkMode = false
             };
 
         internal static void CheckIfSaveExists()
@@ -59,5 +60,6 @@ namespace WeBe___WeatherVibe.Classes
         public bool StartMinimized { get; set; }
         public bool AutoStart { get; set; }
         public bool StartWithWindows { get; set; }
+        public bool DarkMode { get; set; }
     }
 }

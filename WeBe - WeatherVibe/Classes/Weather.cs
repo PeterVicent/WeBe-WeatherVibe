@@ -28,16 +28,19 @@ namespace WeBe___WeatherVibe.Classes
 
         internal static Weather GetWeatherByLocation(string location)
         {
-            if (location == null || location.Length == 0 
-                || SaveSystem.SaveData.ApiToken == null || SaveSystem.SaveData.ApiToken.Length <= 0)
-                return null;
+            try
+            {
+                if (location == null || location.Length == 0
+                    || SaveSystem.SaveData.ApiToken == null || SaveSystem.SaveData.ApiToken.Length <= 0)
+                    return null;
 
-            var url = $"https://api.tomorrow.io/v4/weather/realtime?location={location}&apikey={SaveSystem.SaveData.ApiToken}";
-            var response = new HttpClient().SendAsync(new HttpRequestMessage() { Method = HttpMethod.Get, RequestUri = new Uri(url) }).Result;
-            response.EnsureSuccessStatusCode();
+                var url = $"https://api.tomorrow.io/v4/weather/realtime?location={location}&apikey={SaveSystem.SaveData.ApiToken}";
+                var response = new HttpClient().SendAsync(new HttpRequestMessage() { Method = HttpMethod.Get, RequestUri = new Uri(url) }).Result;
+                response.EnsureSuccessStatusCode();
 
-            var retorno = response.Content.ReadAsStringAsync().Result;
-            return JsonConvert.DeserializeObject<Weather>(retorno);
+                var retorno = response.Content.ReadAsStringAsync().Result;
+                return JsonConvert.DeserializeObject<Weather>(retorno);
+            } catch { return null; }
         }
 
         internal static bool IsNight()
@@ -49,13 +52,13 @@ namespace WeBe___WeatherVibe.Classes
         internal static Image GetActualWeatherImage(bool isNight, KeyValuePair<string, string> weatherCode)
         {
             if (isNight)
-                for (int i = 0; i < Program.WeBe.imageList.Images.Count; i++)
-                    if (Program.WeBe.imageList.Images.Keys[i].Contains($"{weatherCode.Key}1"))
-                        return Program.WeBe.imageList.Images[i];
+                foreach (var picture in Program.Pictures)
+                    if (picture.Contains($"{weatherCode.Key}1"))
+                        return Image.FromFile(picture);
 
-            for (int i = 0; i < Program.WeBe.imageList.Images.Count; i++)
-                if (Program.WeBe.imageList.Images.Keys[i].Contains($"{weatherCode.Key}0"))
-                    return Program.WeBe.imageList.Images[i];
+            foreach (var picture in Program.Pictures)
+                if (picture.Contains($"{weatherCode.Key}0"))
+                    return Image.FromFile(picture);
 
             return null;
         }
