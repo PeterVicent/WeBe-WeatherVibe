@@ -241,7 +241,7 @@ namespace WeBe___WeatherVibe
 
         private void WeBe_Shown(object sender, EventArgs e)
         {
-            SetVisible(!SaveSystem.SaveData.StartMinimized);
+            SetVisible(WindowState != FormWindowState.Minimized);
         }
 
         public void SetVisible(bool visible)
