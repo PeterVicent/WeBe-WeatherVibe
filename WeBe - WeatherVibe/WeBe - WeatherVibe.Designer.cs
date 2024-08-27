@@ -229,6 +229,7 @@ namespace WeBe___WeatherVibe
             // 
             // tabControl_Principal
             // 
+            this.tabControl_Principal.Appearance = System.Windows.Forms.TabAppearance.FlatButtons;
             this.tabControl_Principal.Controls.Add(this.tabPage_Home);
             this.tabControl_Principal.Controls.Add(this.tabPage_Profiles);
             this.tabControl_Principal.Controls.Add(this.tabPage_Settings);
@@ -255,9 +256,9 @@ namespace WeBe___WeatherVibe
             this.tabPage_Home.Controls.Add(this.picBox_Weather);
             this.tabPage_Home.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabPage_Home.HorizontalScrollbarBarColor = true;
-            this.tabPage_Home.Location = new System.Drawing.Point(4, 35);
+            this.tabPage_Home.Location = new System.Drawing.Point(4, 38);
             this.tabPage_Home.Name = "tabPage_Home";
-            this.tabPage_Home.Size = new System.Drawing.Size(575, 465);
+            this.tabPage_Home.Size = new System.Drawing.Size(575, 462);
             this.tabPage_Home.Style = MetroFramework.MetroColorStyle.Orange;
             this.tabPage_Home.TabIndex = 0;
             this.tabPage_Home.Text = "Home";
@@ -342,7 +343,7 @@ namespace WeBe___WeatherVibe
             // 
             this.btn_Stop.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.btn_Stop.Enabled = false;
-            this.btn_Stop.Location = new System.Drawing.Point(0, 399);
+            this.btn_Stop.Location = new System.Drawing.Point(0, 396);
             this.btn_Stop.Name = "btn_Stop";
             this.btn_Stop.Size = new System.Drawing.Size(575, 33);
             this.btn_Stop.Style = MetroFramework.MetroColorStyle.Orange;
@@ -354,7 +355,7 @@ namespace WeBe___WeatherVibe
             // btn_Start
             // 
             this.btn_Start.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.btn_Start.Location = new System.Drawing.Point(0, 432);
+            this.btn_Start.Location = new System.Drawing.Point(0, 429);
             this.btn_Start.Name = "btn_Start";
             this.btn_Start.Size = new System.Drawing.Size(575, 33);
             this.btn_Start.Style = MetroFramework.MetroColorStyle.Orange;
@@ -375,9 +376,9 @@ namespace WeBe___WeatherVibe
             this.tabPage_Profiles.Controls.Add(this.chkBox_SimplifiedMode);
             this.tabPage_Profiles.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabPage_Profiles.HorizontalScrollbarBarColor = true;
-            this.tabPage_Profiles.Location = new System.Drawing.Point(4, 35);
+            this.tabPage_Profiles.Location = new System.Drawing.Point(4, 38);
             this.tabPage_Profiles.Name = "tabPage_Profiles";
-            this.tabPage_Profiles.Size = new System.Drawing.Size(575, 465);
+            this.tabPage_Profiles.Size = new System.Drawing.Size(575, 462);
             this.tabPage_Profiles.Style = MetroFramework.MetroColorStyle.Orange;
             this.tabPage_Profiles.TabIndex = 1;
             this.tabPage_Profiles.Text = "Profiles";
@@ -495,9 +496,9 @@ namespace WeBe___WeatherVibe
             this.tabPage_Settings.Controls.Add(this.label_Country);
             this.tabPage_Settings.Controls.Add(this.cbx_Country);
             this.tabPage_Settings.HorizontalScrollbarBarColor = true;
-            this.tabPage_Settings.Location = new System.Drawing.Point(4, 35);
+            this.tabPage_Settings.Location = new System.Drawing.Point(4, 38);
             this.tabPage_Settings.Name = "tabPage_Settings";
-            this.tabPage_Settings.Size = new System.Drawing.Size(575, 465);
+            this.tabPage_Settings.Size = new System.Drawing.Size(575, 462);
             this.tabPage_Settings.TabIndex = 2;
             this.tabPage_Settings.Text = "Settings";
             this.tabPage_Settings.VerticalScrollbarBarColor = true;
@@ -505,7 +506,7 @@ namespace WeBe___WeatherVibe
             // btn_Save
             // 
             this.btn_Save.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.btn_Save.Location = new System.Drawing.Point(0, 442);
+            this.btn_Save.Location = new System.Drawing.Point(0, 439);
             this.btn_Save.Name = "btn_Save";
             this.btn_Save.Size = new System.Drawing.Size(575, 23);
             this.btn_Save.Style = MetroFramework.MetroColorStyle.Orange;
