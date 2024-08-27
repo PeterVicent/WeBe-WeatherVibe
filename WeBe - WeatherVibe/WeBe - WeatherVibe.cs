@@ -22,6 +22,7 @@ namespace WeBe___WeatherVibe
             }
             else
             {
+                WindowState = FormWindowState.Minimized;
                 SetVisible(false);
                 ShowSuccessfulNotification(Language.DataBase.Successful, Language.DataBase.StartedMinimized);
             }
