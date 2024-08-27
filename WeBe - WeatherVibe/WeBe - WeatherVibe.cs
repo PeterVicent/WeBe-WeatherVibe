@@ -1,7 +1,7 @@
 ﻿using Microsoft.Win32;
 using System;
-using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Windows.Forms;
 using WeBe___WeatherVibe.Classes;
 
@@ -14,6 +14,22 @@ namespace WeBe___WeatherVibe
         public WeBe()
         {
             InitializeComponent();
+
+            if (!SaveSystem.SaveData.StartMinimized)
+            {
+                WindowState = FormWindowState.Normal;
+                SetVisible(true);
+            }
+            else
+            {
+                SetVisible(false);
+                ShowSuccessfulNotification(Language.DataBase.Successful, Language.DataBase.StartedMinimized);
+            }
+        }
+
+        internal void ShowSuccessfulNotification(string title, string message)
+        {
+            Notify.ShowBalloonTip(1000, title, message, ToolTipIcon.Info);
         }
 
         internal void BringToFontTheWindows()
@@ -21,6 +37,7 @@ namespace WeBe___WeatherVibe
             SetVisible(true);
             WindowState = FormWindowState.Normal;
             BringToFront();
+            CenterToScreen();
         }
 
         private void cbx_Country_DropDown(object sender, EventArgs e)
@@ -137,40 +154,41 @@ namespace WeBe___WeatherVibe
 
             listBox_Profiles.Items.Clear();
 
-            var profiles = chkBox_IsNight.Checked
-                ? Profile.ProfilesNight
-                : Profile.ProfilesDay;
-            listBox_Profiles.Items.AddRange(profiles.ToArray());
+            foreach (var profileDay in Profile.ProfilesDay)
+                listBox_Profiles.Items.Add($"{profileDay} ({Language.DataBase.Day})");
+
+            foreach (var profileNight in Profile.ProfilesNight)
+                listBox_Profiles.Items.Add($"{profileNight} ({Language.DataBase.Night})");
         }
 
         public void btn_Add_Click(object sender, EventArgs e)
         {
+            var isNightProfile = chkBox_IsNight.Checked;
             var profileName = txtBx_ProfileName.Text;
-            if (profileName.Length <= 0 || listBox_Profiles.Items.Contains(profileName))
+            var profileNameWithNight = string.Concat(profileName, " (", isNightProfile ? Language.DataBase.Night : Language.DataBase.Day, ")");
+            if (profileName.Length <= 0 || listBox_Profiles.Items.Contains(profileNameWithNight))
                 return;
 
-            listBox_Profiles.Items.Add(profileName);
-            Profile.AddProfile(profileName, chkBox_IsNight.Checked);
+            listBox_Profiles.Items.Add(profileNameWithNight);
+            Profile.AddProfile(profileName, isNightProfile);
         }
 
         private void btn_Clear_Click(object sender, EventArgs e)
         {
             listBox_Profiles.Items.Clear();
-            Profile.ClearProfiles(chkBox_IsNight.Checked);
+            Profile.ClearProfiles();
         }
 
         private void listBox_Profiles_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Delete && listBox_Profiles.SelectedIndex != -1)
             {
-                var selectedItem = listBox_Profiles.Items[listBox_Profiles.SelectedIndex];
+                var selectedItem = listBox_Profiles.Items[listBox_Profiles.SelectedIndex].ToString();
                 listBox_Profiles.Items.Remove(selectedItem);
-                Profile.RemoveProfile(selectedItem.ToString(), chkBox_IsNight.Checked);
+                var textToRemove = selectedItem.Contains(Language.DataBase.Night) ? Language.DataBase.Night : Language.DataBase.Day;
+                Profile.RemoveProfile(selectedItem.Replace($" ({textToRemove})", ""), chkBox_IsNight.Checked);
             }
         }
-
-        private void chkBox_IsNight_CheckStateChanged(object sender, EventArgs e)
-            => cbx_Weathers_SelectedIndexChanged(sender, e);
 
         private void btn_GetWeather_Click(object sender, EventArgs e)
         {
@@ -217,6 +235,13 @@ namespace WeBe___WeatherVibe
         {
             if (WindowState == FormWindowState.Minimized)
                 SetVisible(false);
+            else
+                SetVisible(true);
+        }
+
+        private void WeBe_Shown(object sender, EventArgs e)
+        {
+            SetVisible(!SaveSystem.SaveData.StartMinimized);
         }
 
         public void SetVisible(bool visible)

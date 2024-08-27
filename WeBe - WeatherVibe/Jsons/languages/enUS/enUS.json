@@ -33,5 +33,7 @@
   "SnowIntensity": "Snow Intensity",
   "Temperature": "Temperature",
   "DarkMode": "Dark Mode",
-  "Powered": "Icons and API powered by"
+  "Powered": "Icons and API powered by",
+  "Day": "Day",
+  "Night": "Night"
 }

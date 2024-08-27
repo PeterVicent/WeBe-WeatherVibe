@@ -67,12 +67,10 @@ namespace WeBe___WeatherVibe.Classes
             Save();
         }
 
-        public void ClearProfiles(bool isNight)
+        public void ClearProfiles()
         {
-            if (isNight)
-                ProfilesNight.Clear();
-            else
-                ProfilesDay.Clear();
+            ProfilesNight.Clear();
+            ProfilesDay.Clear();
             Save();
         }
     }

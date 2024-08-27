@@ -239,7 +239,7 @@ namespace WeBe___WeatherVibe
             this.tabControl_Principal.SelectedIndex = 2;
             this.tabControl_Principal.Size = new System.Drawing.Size(583, 504);
             this.tabControl_Principal.Style = MetroFramework.MetroColorStyle.Orange;
-            this.tabControl_Principal.TabIndex = 6;
+            this.tabControl_Principal.TabIndex = 0;
             this.tabControl_Principal.UseStyleColors = true;
             // 
             // tabPage_Home
@@ -404,7 +404,6 @@ namespace WeBe___WeatherVibe
             this.chkBox_IsNight.TabIndex = 8;
             this.chkBox_IsNight.Text = "Night Profile";
             this.chkBox_IsNight.UseVisualStyleBackColor = true;
-            this.chkBox_IsNight.CheckStateChanged += new System.EventHandler(this.chkBox_IsNight_CheckStateChanged);
             // 
             // btn_Clear
             // 
@@ -768,10 +767,12 @@ namespace WeBe___WeatherVibe
             this.Controls.Add(this.tabControl_Principal);
             this.Controls.Add(this.label_Powered);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "WeBe";
             this.Resizable = false;
             this.Style = MetroFramework.MetroColorStyle.Orange;
             this.Text = "WeBe - WeatherVibe";
+            this.Shown += new System.EventHandler(this.WeBe_Shown);
             this.Resize += new System.EventHandler(this.WeBe_Resize);
             ((System.ComponentModel.ISupportInitialize)(this.picBox_Weather)).EndInit();
             this.notify_ContextMenu.ResumeLayout(false);

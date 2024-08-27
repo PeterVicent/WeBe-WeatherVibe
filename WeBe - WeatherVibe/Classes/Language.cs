@@ -43,6 +43,8 @@ namespace WeBe___WeatherVibe.Classes
         public string Temperature { get; set; }
         public string DarkMode { get; set; }
         public string Powered { get; set; }
+        public string Day { get; set; }
+        public string Night { get; set; }
 
         [JsonIgnore()]
         public static Dictionary<string, string> SupportedLanguages { get; set; }

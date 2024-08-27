@@ -27,9 +27,6 @@ namespace WeBe___WeatherVibe
             WeBe = new WeBe();
             SetVariables();
 
-            if (!SaveSystem.SaveData.StartMinimized)
-                WeBe.BringToFontTheWindows();
-
             Application.Run(WeBe);
         }
 
@@ -53,13 +50,6 @@ namespace WeBe___WeatherVibe
                 return;
 
             SetFormTheme(SaveSystem.SaveData.DarkMode);
-            if (SaveSystem.SaveData.StartMinimized)
-            {
-                WeBe.SetVisible(false);
-                WeBe.WindowState = FormWindowState.Minimized;
-                ShowSuccessfulNotification(Language.DataBase.Successful, Language.DataBase.StartedMinimized);
-            }
-
             if (SaveSystem.SaveData.AutoStart)
                 StartThread();
         }
@@ -289,11 +279,6 @@ namespace WeBe___WeatherVibe
             {
                 WeBe.cbx_City.Enabled = true;
             }
-        }
-
-        internal static void ShowSuccessfulNotification(string title, string message)
-        {
-            WeBe.Notify.ShowBalloonTip(1000, title, message, ToolTipIcon.Info);
         }
 
         private static void ThreadLogic()

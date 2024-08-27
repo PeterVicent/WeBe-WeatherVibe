@@ -33,5 +33,7 @@
   "SnowIntensity": "Intensidade da Nave",
   "Temperature": "Temperatura",
   "DarkMode": "Modo Escuro",
-  "Powered": "Icones e API disponibilizados por"
+  "Powered": "Icones e API disponibilizados por",
+  "Day": "Dia",
+  "Night": "Noite"
 }
